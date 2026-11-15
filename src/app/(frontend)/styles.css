@@ -9109,9 +9109,10 @@ select:focus {
   margin-top: 6px !important;
 }
 
-/* Rounded Pill / Capsule Stat Cards matching reference design */
+/* Rounded Pill / Capsule Stat Cards with Clean Neutral Styling */
 .page-shell-admin .admin-stat-pill-card {
   background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
   border-radius: 24px !important;
   padding: 16px 20px 14px !important;
   display: flex !important;
@@ -9123,39 +9124,9 @@ select:focus {
   transition: all 0.18s ease-in-out !important;
 }
 
-.page-shell-admin .admin-stat-pill-card.accent-blue {
-  border: 1.5px solid #bfdbfe !important;
-}
-.page-shell-admin .admin-stat-pill-card.accent-blue:hover {
+.page-shell-admin .admin-stat-pill-card:hover {
   border-color: #2563eb !important;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12) !important;
-  transform: translateY(-2px) !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-indigo {
-  border: 1.5px solid #c7d2fe !important;
-}
-.page-shell-admin .admin-stat-pill-card.accent-indigo:hover {
-  border-color: #4f46e5 !important;
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.12) !important;
-  transform: translateY(-2px) !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-amber {
-  border: 1.5px solid #fde68a !important;
-}
-.page-shell-admin .admin-stat-pill-card.accent-amber:hover {
-  border-color: #d97706 !important;
-  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.12) !important;
-  transform: translateY(-2px) !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-emerald {
-  border: 1.5px solid #a7f3d0 !important;
-}
-.page-shell-admin .admin-stat-pill-card.accent-emerald:hover {
-  border-color: #059669 !important;
-  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1) !important;
   transform: translateY(-2px) !important;
 }
 
@@ -9184,25 +9155,10 @@ select:focus {
   font-weight: 800 !important;
   line-height: 1.2 !important;
   margin-top: 4px !important;
+  color: #0f172a !important;
 }
 
-.page-shell-admin .admin-stat-pill-card.accent-blue .stat-pill-value {
-  color: #1d4ed8 !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-indigo .stat-pill-value {
-  color: #4338ca !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-amber .stat-pill-value {
-  color: #b45309 !important;
-}
-
-.page-shell-admin .admin-stat-pill-card.accent-emerald .stat-pill-value {
-  color: #047857 !important;
-}
-
-/* Circular icon indicator matching reference */
+/* Neutral clean circular icon indicator */
 .page-shell-admin .stat-pill-icon-circle {
   width: 44px !important;
   height: 44px !important;
@@ -9211,26 +9167,8 @@ select:focus {
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-}
-
-.page-shell-admin .icon-circle-blue {
-  background: #eff6ff !important;
-  color: #2563eb !important;
-}
-
-.page-shell-admin .icon-circle-indigo {
-  background: #eef2ff !important;
-  color: #4f46e5 !important;
-}
-
-.page-shell-admin .icon-circle-amber {
-  background: #fffbeb !important;
-  color: #d97706 !important;
-}
-
-.page-shell-admin .icon-circle-emerald {
-  background: #ecfdf5 !important;
-  color: #059669 !important;
+  background: #f1f5f9 !important;
+  color: #334155 !important;
 }
 
 .page-shell-admin .stat-pill-footer {
@@ -9240,29 +9178,15 @@ select:focus {
 .page-shell-admin .stat-pill-link {
   font-size: 12px !important;
   font-weight: 600 !important;
+  color: #2563eb !important;
   display: inline-flex !important;
   align-items: center !important;
   transition: all 0.15s ease !important;
 }
 
-.page-shell-admin .link-blue {
-  color: #2563eb !important;
-}
-
-.page-shell-admin .link-indigo {
-  color: #4f46e5 !important;
-}
-
-.page-shell-admin .link-amber {
-  color: #d97706 !important;
-}
-
-.page-shell-admin .link-emerald {
-  color: #059669 !important;
-}
-
 .page-shell-admin .admin-stat-pill-card:hover .stat-pill-link {
   text-decoration: underline !important;
+  color: #1d4ed8 !important;
 }
 
 .page-shell-admin .admin-dashboard-split {
