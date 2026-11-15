@@ -1,6 +1,6 @@
 import { BookOpen, Boxes, GraduationCap, UserRound, Plus, ArrowRight, ShieldCheck, Clock } from "lucide-react";
 
-export default function AdminDashboard({ summary, onNavigate }) {
+export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
   const statCards = [
     { key: "Students", label: "Registered Students", count: summary.students.length, icon: GraduationCap, color: "text-blue-600", bg: "bg-blue-50" },
     { key: "Faculty", label: "Faculty Allocations", count: summary.faculty.length, icon: UserRound, color: "text-indigo-600", bg: "bg-indigo-50" },
@@ -73,7 +73,7 @@ export default function AdminDashboard({ summary, onNavigate }) {
           </div>
 
           <div className="admin-recent-list">
-            {summary.students.slice(0, 5).map((student) => (
+            {summary.students.slice(0, 4).map((student) => (
               <div
                 key={student.id}
                 className="admin-recent-row"
@@ -116,7 +116,7 @@ export default function AdminDashboard({ summary, onNavigate }) {
             <button
               type="button"
               className="admin-action-btn"
-              onClick={() => onNavigate("Students")}
+              onClick={() => (onQuickCreate ? onQuickCreate("Students") : onNavigate("Students"))}
             >
               <div className="action-icon-wrap bg-blue-50 text-blue-600">
                 <Plus size={18} />
@@ -130,7 +130,7 @@ export default function AdminDashboard({ summary, onNavigate }) {
             <button
               type="button"
               className="admin-action-btn"
-              onClick={() => onNavigate("Faculty")}
+              onClick={() => (onQuickCreate ? onQuickCreate("Faculty") : onNavigate("Faculty"))}
             >
               <div className="action-icon-wrap bg-indigo-50 text-indigo-600">
                 <UserRound size={18} />
@@ -144,7 +144,7 @@ export default function AdminDashboard({ summary, onNavigate }) {
             <button
               type="button"
               className="admin-action-btn"
-              onClick={() => onNavigate("Buckets")}
+              onClick={() => (onQuickCreate ? onQuickCreate("Buckets") : onNavigate("Buckets"))}
             >
               <div className="action-icon-wrap bg-amber-50 text-amber-600">
                 <Boxes size={18} />
@@ -158,14 +158,14 @@ export default function AdminDashboard({ summary, onNavigate }) {
             <button
               type="button"
               className="admin-action-btn"
-              onClick={() => onNavigate("Reset-Password")}
+              onClick={() => (onQuickCreate ? onQuickCreate("Courses") : onNavigate("Courses"))}
             >
-              <div className="action-icon-wrap bg-rose-50 text-rose-600">
-                <ShieldCheck size={18} />
+              <div className="action-icon-wrap bg-emerald-50 text-emerald-600">
+                <BookOpen size={18} />
               </div>
               <div className="action-info">
-                <strong>Reset Student Password</strong>
-                <span>Re-assign default date of birth password</span>
+                <strong>Add Course Offering</strong>
+                <span>Register new course in academic catalog</span>
               </div>
             </button>
           </div>

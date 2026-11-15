@@ -246,13 +246,20 @@ export default function Admin() {
     });
   }, [records, query]);
 
-  const beginCreate = () => {
+  const beginCreate = (targetActive = active) => {
     const initial = {};
-    (fields[active] || []).forEach((field) => {
+    (fields[targetActive] || []).forEach((field) => {
       initial[field.name] = field.type === "number" ? 0 : field.type === "checkbox" ? true : "";
     });
     setForm(initial);
     setEditing("new");
+  };
+
+  const handleQuickCreate = (targetResourceKey) => {
+    navigate(`/KLEF/3-2/Admin/G-Bhaanu-Sai/${targetResourceKey}`);
+    setTimeout(() => {
+      beginCreate(targetResourceKey);
+    }, 50);
   };
 
   const beginEdit = (record) => {
@@ -417,6 +424,7 @@ export default function Admin() {
             <AdminDashboard
               summary={summary}
               onNavigate={(key) => navigate(`/KLEF/3-2/Admin/G-Bhaanu-Sai/${key}`)}
+              onQuickCreate={handleQuickCreate}
             />
           )}
 
