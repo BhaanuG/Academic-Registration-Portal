@@ -5,7 +5,7 @@ import DatePicker from "../components/common/DatePicker";
 import PasswordInput from "../components/common/PasswordInput";
 import PortalFooter from "../components/layout/PortalFooter";
 import { useAuth } from "../hooks/useAuth";
-import { rememberDateOfBirth } from "../services/authService";
+import { createSession, rememberDateOfBirth } from "../services/authService";
 import { portalPath } from "../utils/routes";
 import { isValidStudentId } from "../utils/validation";
 export default function Login() {
@@ -27,42 +27,20 @@ export default function Login() {
     if (!isAdmin && !dateOfBirth) {
       return setError("Select your date of birth to continue.");
     }
-    setError("Signing in securely…");
-    const result = await fetch("/portal-api/auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: studentId, password: isAdmin ? password : dateOfBirth }),
-    }).then((response) => response.json()).catch(() => ({ ok: false }));
-
-    if (result && result.ok && result.user) {
-      setError("");
-      localStorage.setItem("klef-student-id", studentId);
-      const routeName = (result.user.name || "Student").trim().replace(/\s+/g, "-");
-      localStorage.setItem("klef-student-name", routeName);
-      if (dateOfBirth) rememberDateOfBirth(studentId, dateOfBirth);
-      signIn(studentId);
-      if (result.user.role === "admin") navigate("/KLEF/3-2/Admin/G-Bhaanu-Sai/Dashboard");
-      else navigate(portalPath(studentId, routeName, "overview"));
-      return;
-    }
-
+    // Demonstration-only frontend authentication
+    setError("");
     if (isAdmin) {
-      setError("");
-      localStorage.setItem("klef-student-id", studentId);
-      localStorage.setItem("klef-student-name", "G-Bhaanu-Sai");
+      createSession(studentId, "admin");
       signIn(studentId);
       navigate("/KLEF/3-2/Admin/G-Bhaanu-Sai/Dashboard");
       return;
     }
 
-    // UI-first preview fallback: Allow student login directly using mock profile
-    setError("");
-    localStorage.setItem("klef-student-id", studentId);
-    const mockName = "Anirudh-Varma";
-    localStorage.setItem("klef-student-name", mockName);
+    createSession(studentId, "student");
+    const demoStudentName = "Anirudh-Varma";
     if (dateOfBirth) rememberDateOfBirth(studentId, dateOfBirth);
     signIn(studentId);
-    navigate(portalPath(studentId, mockName, "overview"));
+    navigate(portalPath(studentId, demoStudentName, "overview"));
   };
   return (
     <div className="login-page">
@@ -144,7 +122,7 @@ export default function Login() {
               </button>
             </form>
             <div className="login-help">
-              <span>Changed your password and cannot sign in?</span>
+              <span>Demonstration portal · Development access</span>
               <Link to="/reset-password">Reset password</Link>
             </div>
           </div>

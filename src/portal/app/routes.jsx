@@ -29,66 +29,11 @@ function PortalRoute() {
   const [cluster, setCluster] = useState(() => getStudentCluster(studentId));
   const [dataVersion, setDataVersion] = useState(0);
 
+  // Pure frontend state synchronization using development data
   useEffect(() => {
-    Promise.all([
-      fetch("/portal-api/buckets").then((response) => response.json()),
-      fetch("/portal-api/courses").then((response) => response.json()),
-      fetch("/portal-api/faculty").then((response) => response.json()),
-      fetch("/portal-api/preferences").then((response) => response.json()),
-    ]).then(([bucketResult, courseResult, facultyResult, preferenceResult]) => {
-      if (bucketResult.ok && courseResult.ok) {
-        const nextBuckets = bucketResult.docs.map((bucket) => ({
-          id: bucket.code,
-          databaseId: bucket.id,
-          short: bucket.shortName,
-          title: bucket.title,
-          subjects: courseResult.docs
-            .filter((course) => (typeof course.bucket === "object" ? course.bucket.id : course.bucket) === bucket.id && course.active !== false)
-            .map((course) => ({
-              id: course.id,
-              code: course.courseCode,
-              name: course.name,
-              credits: course.credits,
-              ltps: [course.lectureHours || 0, course.tutorialHours || 0, course.practicalHours || 0, course.skillHours || 0],
-              components: course.components,
-              description: course.description || "",
-              prerequisite: course.prerequisite || "",
-            })),
-        }));
-        buckets.splice(0, buckets.length, ...nextBuckets);
-      }
-      if (facultyResult.ok) {
-        faculty.splice(0, faculty.length, ...facultyResult.docs.map((person) => ({
-          databaseId: person.id,
-          id: person.employeeId,
-          name: person.facultyName,
-          designation: person.designation || "Faculty",
-          department: person.department || "Computer Science & Engineering",
-          subjects: [person.courseName],
-          components: person.component,
-          allocation: `${person.section} · ${person.component.join(" / ")}`,
-          section: person.section,
-        })));
-      }
-      if (preferenceResult.ok && preferenceResult.docs.length) {
-        const saved = {};
-        preferenceResult.docs.forEach((preference) => {
-          const courseCode =
-            typeof preference.course === "object" ? preference.course.courseCode : "";
-          if (!courseCode) return;
-          saved[`${courseCode}-${preference.component}`] = preference.rankings
-            .sort((a, b) => a.rank - b.rank)
-            .map((ranking) =>
-              typeof ranking.faculty === "object"
-                ? ranking.faculty.employeeId
-                : "",
-            );
-        });
-        setPreferences((current) => ({ ...current, ...saved }));
-      }
-      setDataVersion((value) => value + 1);
-    }).catch(() => {});
-  }, []);
+    setPreferences(loadPreferences(studentId));
+    setCluster(getStudentCluster(studentId));
+  }, [studentId]);
 
   useEffect(() => {
     savePreferences(studentId, preferences);
@@ -149,7 +94,6 @@ function PortalRoute() {
       setPage={setPage}
       studentId={studentId}
       onLogout={() => {
-        fetch("/portal-api/auth", { method: "DELETE" }).catch(() => {});
         signOut();
         navigate("/");
       }}

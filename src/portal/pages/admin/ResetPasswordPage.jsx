@@ -61,42 +61,37 @@ export default function AdminResetPasswordPage() {
       setDobPassword(found.dateOfBirth || "2005-04-18");
       setIsSearching(false);
     } else {
-      fetch("/portal-api/students")
-        .then((r) => r.json())
-        .then((res) => {
-          if (res?.ok && Array.isArray(res.docs)) {
-            const remoteStudent = res.docs.find(
-              (s) => s.username === cleanId || s.universityEmail?.toLowerCase() === cleanId.toLowerCase()
-            );
-            if (remoteStudent) {
-              setMatchedAccount({
-                id: remoteStudent.id || remoteStudent.username,
-                type: "student",
-                identifier: remoteStudent.username,
-                name: remoteStudent.name || "Student",
-                email: remoteStudent.universityEmail || `${remoteStudent.username}@kluniversity.in`,
-                department: "Computer Science & Engineering",
-                cluster: remoteStudent.cluster || "Cluster 2",
-                dateOfBirth: remoteStudent.dateOfBirth || "2005-04-18",
-                counselor: remoteStudent.counselor?.name || "Dr. S. Srinivasa Rao",
-              });
-              setDobPassword(remoteStudent.dateOfBirth || "2005-04-18");
-            } else {
-              setMatchedAccount(null);
-              setNotFound(true);
-            }
-          } else {
-            setMatchedAccount(null);
-            setNotFound(true);
-          }
-        })
-        .catch(() => {
-          setMatchedAccount(null);
-          setNotFound(true);
-        })
-        .finally(() => {
-          setIsSearching(false);
+      // Check local storage records or default student record
+      const localStudents = JSON.parse(localStorage.getItem("klef-admin-students") || "[]");
+      const remoteStudent = localStudents.find(
+        (s) => s.username === cleanId || s.universityEmail?.toLowerCase() === cleanId.toLowerCase()
+      );
+      if (remoteStudent || cleanId === "2400030952") {
+        const studentRecord = remoteStudent || {
+          id: "student-2400030952",
+          username: "2400030952",
+          name: "Anirudh Varma",
+          universityEmail: "2400030952@kluniversity.in",
+          cluster: "Cluster 2",
+          dateOfBirth: "2005-04-18",
+        };
+        setMatchedAccount({
+          id: studentRecord.id || studentRecord.username,
+          type: "student",
+          identifier: studentRecord.username,
+          name: studentRecord.name || "Student",
+          email: studentRecord.universityEmail || `${studentRecord.username}@kluniversity.in`,
+          department: "Computer Science & Engineering",
+          cluster: studentRecord.cluster || "Cluster 2",
+          dateOfBirth: studentRecord.dateOfBirth || "2005-04-18",
+          counselor: "Dr. S. Srinivasa Rao",
         });
+        setDobPassword(studentRecord.dateOfBirth || "2005-04-18");
+      } else {
+        setMatchedAccount(null);
+        setNotFound(true);
+      }
+      setIsSearching(false);
     }
   }, [identifier]);
 
@@ -117,22 +112,6 @@ export default function AdminResetPasswordPage() {
     const targetId = matchedAccount.identifier;
 
     try {
-      // Save student password update to backend
-      if (matchedAccount?.id) {
-        await fetch("/portal-api/students", {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id: matchedAccount.id,
-            dateOfBirth: dobPassword,
-            resetPasswordToDob: true,
-          }),
-        }).catch(() => {});
-      }
-
-      // Update local storage so student can immediately log in with this new password
-      localStorage.setItem(`klef-password-${targetId}`, dobPassword);
-
       // Update student record's DOB in local admin list
       const localData = JSON.parse(localStorage.getItem("klef-admin-students") || "[]");
       const updated = localData.map((s) =>
@@ -142,14 +121,14 @@ export default function AdminResetPasswordPage() {
 
       setMessage({
         type: "success",
-        title: "Password Successfully Reset",
-        text: `Credential updated for ${matchedAccount.name} (${targetId}). The account password is now synchronized to the student's Date of Birth (${dobPassword}).`,
+        title: "Demonstration Reset Completed",
+        text: `Credential updated for ${matchedAccount.name} (${targetId}) in demonstration state. (In production, password reset requires institutional backend synchronization).`,
       });
     } catch {
       setMessage({
         type: "error",
         title: "Reset Operation Failed",
-        text: "The security subsystem was unable to update credentials. Please verify administrator authorization.",
+        text: "Demonstration error while resetting student record.",
       });
     } finally {
       setIsSubmitting(false);

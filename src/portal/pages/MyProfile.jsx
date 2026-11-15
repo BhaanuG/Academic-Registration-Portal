@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import DatePicker from "../components/common/DatePicker";
 import PageHeading from "../components/common/PageHeading";
 import PasswordInput from "../components/common/PasswordInput";
-import { getRememberedDateOfBirth, getSavedPassword } from "../services/authService";
 import { passwordsMatch } from "../utils/validation";
 import { Check, CheckCircle2, Lock, Shield, User, KeyRound, AlertCircle, Edit3 } from "lucide-react";
 
@@ -10,9 +9,23 @@ export default function Profile({ studentId }) {
   const [editing, setEditing] = useState(false);
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState({
+    name: "Anirudh Varma",
+    rollNumber: studentId || "2400030952",
+    department: "Computer Science & Engineering",
+    specialization: "Generative AI & Multi-modal Intelligence",
+    batch: "2024-2028",
+    term: "Third Year · Semester 5",
+    gender: "Male",
+    dateOfBirth: "2005-04-18",
+    aadhaarNumber: "1234 5678 9012",
+    apaarNumber: "APAAR-9876-5432",
+    residencyStatus: "Hosteler",
+    parentName: "K. R. Varma",
+    parentPhoneNumber: "+91 98765 00000",
+  });
   const [email] = useState(`${studentId}@kluniversity.in`);
-  const [personalEmail, setPersonalEmail] = useState("");
+  const [personalEmail, setPersonalEmail] = useState("anirudh.varma@gmail.com");
   const [mobile, setMobile] = useState("+91 98765 43210");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordStatus, setPasswordStatus] = useState("");
@@ -21,39 +34,15 @@ export default function Profile({ studentId }) {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const existingPassword = getSavedPassword(studentId);
-  const rememberedDob = getRememberedDateOfBirth(studentId);
-
-  useEffect(() => {
-    fetch("/portal-api/students")
-      .then((response) => response.json())
-      .then((result) => {
-        const student = result.docs?.[0];
-        if (!student) return;
-        setProfile(student);
-        setMobile(student.mobileNumber || "");
-        setPersonalEmail(student.personalEmail || "");
-      })
-      .catch(() => {});
-  }, []);
-
   const save = async () => {
     setLoading(true);
-    try {
-      const result = await fetch("/portal-api/students", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: profile?.id, mobileNumber: mobile, personalEmail }),
-      }).then((response) => response.json());
-
-      if (result.ok) {
-        setEditing(false);
-        setSaved(true);
-        window.setTimeout(() => setSaved(false), 3000);
-      }
-    } finally {
+    // Pure frontend state update for demonstration
+    setTimeout(() => {
       setLoading(false);
-    }
+      setEditing(false);
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    }, 200);
   };
 
   return (
@@ -219,33 +208,9 @@ export default function Profile({ studentId }) {
               className="security-form"
               onSubmit={async (e) => {
                 e.preventDefault();
-                if (!existingPassword && !currentDob) {
-                  setPasswordStatus("error");
-                  setPasswordMessage("Select your registered date of birth.");
-                  return;
-                }
-                if (!existingPassword && rememberedDob && currentDob !== rememberedDob) {
-                  setPasswordStatus("error");
-                  setPasswordMessage("The selected date of birth does not match this account.");
-                  return;
-                }
                 if (!passwordsMatch(newPassword, confirmPassword)) {
                   setPasswordStatus("error");
                   setPasswordMessage("New passwords do not match.");
-                  return;
-                }
-                const result = await fetch("/portal-api/auth", {
-                  method: "PUT",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    currentPassword: existingPassword ? currentPassword : currentDob,
-                    newPassword,
-                  }),
-                }).then((response) => response.json());
-
-                if (!result.ok) {
-                  setPasswordStatus("error");
-                  setPasswordMessage(result.message);
                   return;
                 }
                 setCurrentPassword("");
@@ -254,26 +219,20 @@ export default function Profile({ studentId }) {
                 setConfirmPassword("");
                 setPasswordStatus("success");
                 setPasswordMessage(
-                  "Password updated successfully. Use it on your next login.",
+                  "Demonstration mode: Password change simulated. (Real password changes require institutional directory service integration).",
                 );
               }}
             >
-              {existingPassword ? (
-                <div className="field-block">
-                  <span className="field-label">Current Password</span>
-                  <PasswordInput
-                    value={currentPassword}
-                    onChange={(event) => setCurrentPassword(event.target.value)}
-                    autoComplete="current-password"
-                    required
-                  />
-                </div>
-              ) : (
-                <div className="field-block">
-                  <span className="field-label">Current Password (Registered DOB)</span>
-                  <DatePicker label="Select Date of Birth" value={currentDob} onChange={setCurrentDob} />
-                </div>
-              )}
+              <div className="field-block">
+                <span className="field-label">Current Password</span>
+                <PasswordInput
+                  value={currentPassword}
+                  onChange={(event) => setCurrentPassword(event.target.value)}
+                  autoComplete="current-password"
+                  placeholder="Enter current credential"
+                  required
+                />
+              </div>
 
               <div className="field-block">
                 <span className="field-label">New Password</span>
