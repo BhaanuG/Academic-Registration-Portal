@@ -31,10 +31,10 @@ export default function Developer() {
 
         <article className="developer-reference-card">
           <section className="developer-intro-card">
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 12px", background: "#eef4ff", borderRadius: "999px", color: "#2563eb", fontSize: "12px", fontWeight: "700", marginBottom: "16px" }}>
+            <div className="developer-badge">
               <Sparkles size={14} /> PORTAL ARCHITECT &amp; DEVELOPER
             </div>
-            <h1>Designed &amp; Developed by<br /><span style={{ color: "#356ae6" }}>G. Bhaanu Sai</span></h1>
+            <h1>Designed &amp; Developed by<br /><span>G. Bhaanu Sai</span></h1>
             <p className="developer-intro-copy">
               Architected and designed for the Academic Registration Portal interface and user experience at Koneru Lakshmaiah Education Foundation. Crafted with precision for high usability, clear readability, and frictionless registration.
             </p>
