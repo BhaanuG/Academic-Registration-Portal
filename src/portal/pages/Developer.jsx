@@ -33,6 +33,15 @@ export default function Developer() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleScrollToExplore = () => {
+    const storySection = document.querySelector(".developer-story");
+    if (storySection) {
+      storySection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollBy({ top: 400, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="developer-shell developer-reference">
       <main className="developer-reference-page">
@@ -101,12 +110,18 @@ export default function Developer() {
           </section>
         </article>
 
-        {/* Right-Side Vertical Scroll Indicator */}
+        {/* Right-Side Vertical Scroll Indicator Button */}
         <aside
           className={`developer-scroll-indicator ${isScrolled ? "is-hidden" : ""}`}
-          aria-hidden="true"
+          aria-hidden={isScrolled ? "true" : undefined}
         >
-          <div className="scroll-track">
+          <button
+            type="button"
+            className="scroll-track-button"
+            onClick={handleScrollToExplore}
+            title="Scroll down to read personal story"
+            aria-label="Scroll to explore personal story"
+          >
             <span className="scroll-char">S</span>
             <span className="scroll-char">C</span>
             <span className="scroll-char">R</span>
@@ -127,7 +142,7 @@ export default function Developer() {
             <div className="scroll-cue-arrow">
               <ArrowDown size={13} />
             </div>
-          </div>
+          </button>
         </aside>
       </main>
       <PortalFooter returnTo={returnTo} />
