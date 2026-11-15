@@ -186,8 +186,8 @@
 }
 
 .summary-table thead {
-  background: #f1f5f9 !important;
-  border-bottom: 2px solid #cbd5e1 !important;
+  background: #fbf5e6 !important;
+  border-bottom: 2px solid #ebdcc5 !important;
 }
 
 .summary-table th {
@@ -196,8 +196,9 @@
   font-weight: 700 !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  color: #475569 !important;
-  border-right: 1px solid #e2e8f0 !important;
+  color: #78716c !important;
+  border-right: 1.5px solid #ebdcc5 !important;
+  border-bottom: 2px solid #ebdcc5 !important;
 }
 
 .summary-table th:last-child {
@@ -208,8 +209,8 @@
   padding: 14px 18px !important;
   font-size: 13px !important;
   vertical-align: top !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  border-right: 1px solid #f1f5f9 !important;
+  border-bottom: 1.5px solid #ebdcc5 !important;
+  border-right: 1.5px solid #ebdcc5 !important;
 }
 
 .summary-table td:last-child {
@@ -217,16 +218,21 @@
 }
 
 .summary-table tbody tr.subject-group-start {
-  border-top: 1.5px solid #cbd5e1 !important;
+  border-top: 2px solid #d6c3a5 !important;
+}
+
+.summary-table tbody tr.subject-group-row {
+  border-top: 1px dashed #ebdcc5 !important;
 }
 
 .summary-table tbody tr:hover {
-  background: #fbfdff !important;
+  background: #fffdf7 !important;
 }
 
 .subject-meta-cell {
-  background: #fafcff !important;
-  border-right: 1.5px solid #cbd5e1 !important;
+  background: #fdfbf7 !important;
+  border-right: 1.5px solid #ebdcc5 !important;
+  border-bottom: 2px solid #d6c3a5 !important;
   padding: 18px !important;
 }
 
@@ -287,10 +293,11 @@
 }
 
 .component-tag-cell {
-  border-right: 1.5px solid #cbd5e1 !important;
+  border-right: 1.5px solid #ebdcc5 !important;
+  border-bottom: 1.5px solid #ebdcc5 !important;
   vertical-align: middle !important;
   text-align: center !important;
-  background: #fcfdfe !important;
+  background: #fdfbf7 !important;
 }
 
 .comp-pill {
