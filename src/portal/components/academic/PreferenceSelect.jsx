@@ -59,7 +59,7 @@ export default function PreferenceSelect({
                 value={person.id}
                 disabled={isUsed}
               >
-                {person.name} · Section {sec} ({person.id}){isUsed ? " — Already chosen" : ""}
+                {sec} • {person.name} • {person.id}{isUsed ? " — Already chosen" : ""}
               </option>
             );
           })}

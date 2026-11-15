@@ -341,7 +341,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                                                   : null;
                                                 return (
                                                   <option key={letter} value={letter}>
-                                                    {baseSec}{letter}{optFac ? ` · ${optFac.name} (${optFac.id})` : ""}
+                                                    S - {baseSec}{letter}{optFac ? ` • ${optFac.name} • ${optFac.id}` : ""}
                                                   </option>
                                                 );
                                               })}
@@ -352,7 +352,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                                                     : null;
                                                   return (
                                                     <option value={currentSubVal}>
-                                                      {baseSec}{currentSubVal}{curFac ? ` · ${curFac.name} (${curFac.id})` : ""}
+                                                      S - {baseSec}{currentSubVal}{curFac ? ` • ${curFac.name} • ${curFac.id}` : ""}
                                                     </option>
                                                   );
                                                 })()}
