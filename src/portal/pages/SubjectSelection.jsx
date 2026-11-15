@@ -126,7 +126,7 @@ export default function Subjects({ selections, setSelections, goTo }) {
                       {isNone
                         ? "Not selected (None)"
                         : isRegisteredCourse
-                        ? `${subject.credits} cr · ${subject.ltps ? subject.ltps.join("-") : ""}`
+                        ? `${subject.credits} credits chosen`
                         : "Selection needed"}
                     </small>
                   </div>
@@ -154,11 +154,6 @@ export default function Subjects({ selections, setSelections, goTo }) {
             <div className="bucket-header-meta">
               <span className="bucket-code-pill">{bucket.id}</span>
               <span className="bucket-type-tag">{bucket.short}</span>
-              {bucket.subjects?.[0]?.ltps && (
-                <span className="bucket-type-tag" title="Standard Bucket Component Distribution">
-                  L-T-P-S: {bucket.subjects[0].ltps.join("-")}
-                </span>
-              )}
             </div>
             <h2>{bucket.title}</h2>
             <p className="bucket-desc">
@@ -210,8 +205,18 @@ export default function Subjects({ selections, setSelections, goTo }) {
                     </div>
 
                     <div className="ltps-badge" title="Lecture - Tutorial - Practical - Skill hours per week">
-                      <span>L-T-P-S</span>
-                      <strong>{item.ltps.join("-")}</strong>
+                      <div className="ltps-matrix-labels">
+                        <span>L</span>
+                        <span>T</span>
+                        <span>P</span>
+                        <span>S</span>
+                      </div>
+                      <div className="ltps-matrix-values">
+                        <span>{item.ltps[0]}</span>
+                        <span>{item.ltps[1]}</span>
+                        <span>{item.ltps[2]}</span>
+                        <span>{item.ltps[3]}</span>
+                      </div>
                     </div>
                   </div>
 
