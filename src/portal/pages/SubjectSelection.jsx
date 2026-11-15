@@ -126,7 +126,7 @@ export default function Subjects({ selections, setSelections, goTo }) {
                       {isNone
                         ? "Not selected (None)"
                         : isRegisteredCourse
-                        ? `${subject.credits} credits chosen`
+                        ? `${subject.credits} cr · ${subject.ltps ? subject.ltps.join("-") : ""}`
                         : "Selection needed"}
                     </small>
                   </div>
@@ -154,6 +154,11 @@ export default function Subjects({ selections, setSelections, goTo }) {
             <div className="bucket-header-meta">
               <span className="bucket-code-pill">{bucket.id}</span>
               <span className="bucket-type-tag">{bucket.short}</span>
+              {bucket.subjects?.[0]?.ltps && (
+                <span className="bucket-type-tag" title="Standard Bucket Component Distribution">
+                  L-T-P-S: {bucket.subjects[0].ltps.join("-")}
+                </span>
+              )}
             </div>
             <h2>{bucket.title}</h2>
             <p className="bucket-desc">

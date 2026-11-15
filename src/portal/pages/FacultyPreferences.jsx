@@ -125,7 +125,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                   <strong>{item?.name || "No subject selected"}</strong>
                   {item ? (
                     <small>
-                      {item.code} · {item.credits} credits
+                      {item.code} · {item.credits} credits · L-T-P-S: {item.ltps ? item.ltps.join("-") : "3-0-2-0"}
                     </small>
                   ) : (
                     <small>Select a subject in {bucket.id} to continue</small>
@@ -161,7 +161,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                   <span className="eyebrow">{activeEntry.bucket.title} ({activeEntry.bucket.id})</span>
                   <h2>{subject.name}</h2>
                   <p>
-                    {subject.code} · {subject.credits} credits · Components:{" "}
+                    {subject.code} · {subject.credits} credits · L-T-P-S: {subject.ltps ? subject.ltps.join("-") : "3-0-2-0"} · Components:{" "}
                     {subject.components.map((c) => componentNames[c] || c).join(", ")}
                   </p>
                 </div>
@@ -234,7 +234,6 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                 <div className="subcomponent-preferences">
                   <div className="card-heading">
                     <div>
-                      <span className="eyebrow">Secondary allocations</span>
                       <h3>Sub-component preference matrix</h3>
                       <p>
                         For each lecture choice, configure your preferred order for sub-sections.
@@ -336,19 +335,27 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                                               }
                                             >
                                               <option value="">Select sub-section</option>
-                                              {availableLetters.map((letter) => (
-                                                <option key={letter} value={letter}>
-                                                  {baseSec}
-                                                  {letter}
-                                                </option>
-                                              ))}
-                                              {currentSubVal &&
-                                                !availableLetters.includes(currentSubVal) && (
-                                                  <option value={currentSubVal}>
-                                                    {baseSec}
-                                                    {currentSubVal}
+                                              {availableLetters.map((letter) => {
+                                                const optFac = baseSec
+                                                  ? getSubSectionFaculty(subject.code, baseSec, letter, component)
+                                                  : null;
+                                                return (
+                                                  <option key={letter} value={letter}>
+                                                    {baseSec}{letter}{optFac ? ` · ${optFac.name} (${optFac.id})` : ""}
                                                   </option>
-                                                )}
+                                                );
+                                              })}
+                                              {currentSubVal &&
+                                                !availableLetters.includes(currentSubVal) && (() => {
+                                                  const curFac = baseSec
+                                                    ? getSubSectionFaculty(subject.code, baseSec, currentSubVal, component)
+                                                    : null;
+                                                  return (
+                                                    <option value={currentSubVal}>
+                                                      {baseSec}{currentSubVal}{curFac ? ` · ${curFac.name} (${curFac.id})` : ""}
+                                                    </option>
+                                                  );
+                                                })()}
                                             </select>
                                           </td>
                                           <td className="faculty-col">
