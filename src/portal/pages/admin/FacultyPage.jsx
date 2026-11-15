@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Pencil,
   Plus,
@@ -30,6 +30,18 @@ export default function FacultyPage({
   const [sortBy, setSortBy] = useState("facultyName");
   const [sortOrder, setSortOrder] = useState("asc");
   const [selectedFaculty, setSelectedFaculty] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedFaculty(null);
+      }
+    };
+    if (selectedFaculty) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [selectedFaculty]);
 
   // Extract unique courses for filtering
   const courseOptions = useMemo(() => {

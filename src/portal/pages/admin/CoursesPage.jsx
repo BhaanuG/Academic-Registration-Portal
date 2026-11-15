@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Pencil,
   Plus,
@@ -28,6 +28,18 @@ export default function CoursesPage({
   const [sortBy, setSortBy] = useState("courseCode");
   const [sortOrder, setSortOrder] = useState("asc");
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedCourse(null);
+      }
+    };
+    if (selectedCourse) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [selectedCourse]);
 
   // Extract unique buckets and credit options for filters
   const bucketOptions = useMemo(() => {

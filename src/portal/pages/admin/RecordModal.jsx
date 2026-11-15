@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Save, X } from "lucide-react";
 
 export default function RecordModal({
@@ -11,6 +12,16 @@ export default function RecordModal({
   onSave,
   onClose,
 }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       className="admin-modal-backdrop"

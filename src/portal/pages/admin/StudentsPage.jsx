@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Pencil,
   Plus,
@@ -33,6 +33,18 @@ export default function StudentsPage({
   const [clusterFilter, setClusterFilter] = useState("all");
   const [residencyFilter, setResidencyFilter] = useState("all");
   const [selectedStudent, setSelectedStudent] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedStudent(null);
+      }
+    };
+    if (selectedStudent) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [selectedStudent]);
 
   const filteredAndSorted = useMemo(() => {
     let result = [...records];

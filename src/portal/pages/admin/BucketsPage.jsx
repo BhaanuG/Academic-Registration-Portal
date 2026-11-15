@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Pencil,
   Plus,
@@ -30,6 +30,18 @@ export default function BucketsPage({
   const [sortBy, setSortBy] = useState("sortOrder");
   const [sortOrder, setSortOrder] = useState("asc");
   const [selectedBucket, setSelectedBucket] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedBucket(null);
+      }
+    };
+    if (selectedBucket) {
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [selectedBucket]);
 
   // Map bucket code to associated curriculum courses
   const bucketCoursesMap = useMemo(() => {
