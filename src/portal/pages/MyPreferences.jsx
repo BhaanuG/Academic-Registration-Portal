@@ -28,20 +28,25 @@ export default function MyPreference({ selections, prefs, cluster }) {
   };
 
   const rows = useMemo(() => {
-    return buckets
-      .map((bucket) => {
-        const subject = bucket.subjects.find((item) => item.code === selections[bucket.id]);
-        return subject ? { bucket, subject } : null;
-      })
-      .filter(Boolean);
+    return buckets.map((bucket) => {
+      const selectedCode = selections[bucket.id];
+      const isNone = selectedCode === "NONE";
+      const subject = bucket.subjects.find((item) => item.code === selectedCode);
+      return {
+        bucket,
+        subject: subject || null,
+        isNone,
+      };
+    });
   }, [selections]);
 
-  const totalPossibleComponents = useMemo(() => {
-    return rows.reduce((acc, r) => acc + r.subject.components.length, 0);
+  const selectedCoursesCount = useMemo(() => {
+    return rows.filter((r) => r.subject).length;
   }, [rows]);
 
   const completedLecturePrefs = useMemo(() => {
     return rows.filter((r) => {
+      if (!r.subject) return false;
       const lPrefs = prefs[`${r.subject.code}-L`] || [];
       return lPrefs.filter(Boolean).length === 3;
     }).length;
@@ -141,23 +146,23 @@ export default function MyPreference({ selections, prefs, cluster }) {
       {/* Metric / Status Strip */}
       <div className="summary-metrics-strip">
         <div className="metric-chip">
-          <Layers size={18} className="text-blue-600" />
+          <Layers size={18} className="text-amber-700" />
           <div>
-            <span>Enrolled Subjects</span>
-            <strong>{rows.length} Courses Selected</strong>
+            <span>Registered Subjects</span>
+            <strong>{selectedCoursesCount} of {buckets.length} Buckets Chosen</strong>
           </div>
         </div>
 
         <div className="metric-chip">
-          <ShieldCheck size={18} className="text-emerald-600" />
+          <ShieldCheck size={18} className="text-emerald-700" />
           <div>
             <span>Lecture Rankings</span>
-            <strong>{completedLecturePrefs} of {rows.length} Fully Ranked</strong>
+            <strong>{completedLecturePrefs} of {selectedCoursesCount} Fully Ranked</strong>
           </div>
         </div>
 
         <div className="metric-chip">
-          <CheckCircle2 size={18} className="text-indigo-600" />
+          <CheckCircle2 size={18} className="text-amber-700" />
           <div>
             <span>Academic Cohort</span>
             <strong>{cluster || "Cluster 2"}</strong>
@@ -188,42 +193,60 @@ export default function MyPreference({ selections, prefs, cluster }) {
               </tr>
             </thead>
             <tbody>
-              {rows.map(({ bucket, subject }) => (
-                subject.components.map((component, compIdx) => (
-                  <tr
-                    key={`${subject.code}-${component}`}
-                    className={`${compIdx === 0 ? "subject-group-start" : "subject-group-row"}`}
-                  >
-                    {compIdx === 0 && (
-                      <td rowSpan={subject.components.length} className="subject-meta-cell">
-                        <span className="summary-bucket-tag">{bucket.short}</span>
-                        <strong>{subject.name}</strong>
-                        <div className="summary-subject-sub">
-                          <span>{subject.code}</span>
-                          <span>·</span>
-                          <span>{subject.credits} Credits</span>
-                        </div>
+              {rows.map(({ bucket, subject, isNone }) => {
+                if (subject) {
+                  return subject.components.map((component, compIdx) => (
+                    <tr
+                      key={`${subject.code}-${component}`}
+                      className={`${compIdx === 0 ? "subject-group-start" : "subject-group-row"}`}
+                    >
+                      {compIdx === 0 && (
+                        <td rowSpan={subject.components.length} className="subject-meta-cell">
+                          <span className="summary-bucket-tag">{bucket.short}</span>
+                          <strong>{subject.name}</strong>
+                          <div className="summary-subject-sub">
+                            <span>{subject.code}</span>
+                            <span>·</span>
+                            <span>{subject.credits} Credits</span>
+                          </div>
+                        </td>
+                      )}
+                      <td className="component-tag-cell">
+                        <span className={`comp-pill comp-${component}`}>
+                          {componentNames[component] || component}
+                        </span>
                       </td>
-                    )}
+                      <td>{preferenceCell(subject, component, 0)}</td>
+                      <td>{preferenceCell(subject, component, 1)}</td>
+                      <td>{preferenceCell(subject, component, 2)}</td>
+                    </tr>
+                  ));
+                }
+
+                return (
+                  <tr key={bucket.id} className="subject-group-start row-empty-bucket">
+                    <td className="subject-meta-cell">
+                      <span className="summary-bucket-tag summary-bucket-tag-muted">{bucket.short}</span>
+                      <strong>{bucket.title}</strong>
+                      <div className="summary-subject-sub">
+                        <span>{isNone ? "None of the above selected" : "Not yet registered"}</span>
+                      </div>
+                    </td>
                     <td className="component-tag-cell">
-                      <span className={`comp-pill comp-${component}`}>
-                        {componentNames[component] || component}
+                      <span className="comp-pill comp-none">
+                        None
                       </span>
                     </td>
-                    <td>{preferenceCell(subject, component, 0)}</td>
-                    <td>{preferenceCell(subject, component, 1)}</td>
-                    <td>{preferenceCell(subject, component, 2)}</td>
+                    <td colSpan={3} className="bucket-unregistered-cell">
+                      <span className="unregistered-notice-text">
+                        {isNone
+                          ? "You opted out of this course bucket. No faculty preferences required."
+                          : "Course not selected yet. Choose a course in Subject Selection to assign faculty preferences."}
+                      </span>
+                    </td>
                   </tr>
-                ))
-              ))}
-              {!rows.length && (
-                <tr>
-                  <td colSpan={5} className="summary-empty-cell">
-                    <AlertCircle size={24} className="text-slate-400 mb-2" />
-                    <p>No subjects selected yet. Return to Subject Selection to register courses.</p>
-                  </td>
-                </tr>
-              )}
+                );
+              })}
             </tbody>
           </table>
         </div>

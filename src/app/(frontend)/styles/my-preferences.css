@@ -250,6 +250,33 @@
   border-radius: 4px !important;
 }
 
+.summary-bucket-tag.summary-bucket-tag-muted {
+  color: #78716c !important;
+  background: #f5f0ea !important;
+  border-color: #e7e0d5 !important;
+}
+
+.comp-pill.comp-none {
+  background: #fafaf9 !important;
+  color: #a8a29e !important;
+  border-color: #e7e5e4 !important;
+}
+
+.row-empty-bucket td {
+  background: #fdfbf7 !important;
+}
+
+.bucket-unregistered-cell {
+  padding: 18px 24px !important;
+  text-align: left !important;
+}
+
+.unregistered-notice-text {
+  font-size: 12.5px !important;
+  color: #78716c !important;
+  font-style: italic !important;
+}
+
 .summary-subject-sub {
   display: flex !important;
   align-items: center !important;
