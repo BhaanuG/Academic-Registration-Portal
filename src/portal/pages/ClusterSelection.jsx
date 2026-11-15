@@ -23,7 +23,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
   ];
 
   return (
-    <>
+    <div className="cluster-selection-workspace">
       <PageHeading
         title="Cluster Selection"
         description="Confirm the section cluster assigned to your specialization before choosing semester subjects."
@@ -37,7 +37,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
 
       <section className="specialization-banner">
         <div className="specialization-tag">
-          <Sparkles size={14} />
+          <Sparkles size={13} />
           <span>YOUR SPECIALIZATION COHORT</span>
         </div>
         <strong>Generative AI for Agentic and Multi-Modal Intelligence</strong>
@@ -62,8 +62,13 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
             >
               <div className="cluster-card-header">
                 <span className="cluster-icon" aria-hidden="true">
-                  <Layers size={20} className={selected ? "text-amber-600" : "text-stone-400"} />
+                  <Layers size={18} className={selected ? "text-amber-600" : "text-stone-400"} />
                 </span>
+                {item.recommended && (
+                  <div className="cluster-badge">
+                    <span>Recommended</span>
+                  </div>
+                )}
                 {selected && (
                   <span className="cluster-check">
                     <CheckCircle2 size={18} className="text-amber-600" />
@@ -72,19 +77,15 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
               </div>
 
               <div className="cluster-body">
-                <strong>{item.name}</strong>
-                <div className="cluster-range-pill">
-                  <span>Section range</span>
-                  <em>{item.range}</em>
+                <div className="cluster-title-row">
+                  <strong>{item.name}</strong>
+                  <div className="cluster-range-pill">
+                    <span>Range</span>
+                    <em>{item.range}</em>
+                  </div>
                 </div>
                 <p className="cluster-desc">{item.description}</p>
               </div>
-
-              {item.recommended && (
-                <div className="cluster-badge">
-                  <span>Recommended for your specialization</span>
-                </div>
-              )}
             </div>
           );
         })}
@@ -92,7 +93,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
 
       <div className="cluster-notice">
         <div className="notice-icon-wrap">
-          <Info size={17} className="text-amber-600" />
+          <Info size={16} className="text-amber-600" />
         </div>
         <span>
           Your cluster is based on your specialization cohort. All course buckets will display faculty
@@ -106,7 +107,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
           className="secondary-btn"
           onClick={() => goTo("overview")}
         >
-          <ArrowLeft size={16} />
+          <ArrowLeft size={15} />
           <span>Back to Overview</span>
         </button>
         <button
@@ -121,6 +122,6 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
           <CheckCircle2 size={16} />
         </button>
       </div>
-    </>
+    </div>
   );
 }

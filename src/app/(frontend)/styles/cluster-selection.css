@@ -1,21 +1,70 @@
 /* ==========================================================================
-   CLUSTER SELECTION SPECIFICATION STYLES (PREMIUM GOLD & BALANCED MEDIUM-SMALL RECTANGLES)
+   CLUSTER SELECTION SPECIFICATION STYLES (COMPACT, BALANCED & NO OVER-SIZING)
    ========================================================================== */
-.specialization-banner {
-  margin-top: 20px;
-  padding: 16px 22px;
+
+/* Page heading compact alignment for cluster selection */
+.page-shell-cluster .content {
+  padding: 20px 32px 32px !important;
+}
+
+.cluster-selection-workspace {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+.cluster-selection-workspace .page-heading {
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid #f3eedf !important;
+}
+
+.cluster-selection-workspace .page-heading h1 {
+  font-size: 22px !important;
+  margin: 2px 0 4px !important;
+}
+
+.cluster-selection-workspace .page-heading .heading-description {
+  font-size: 13px !important;
+  color: #64748b !important;
+}
+
+.cluster-selection-workspace .status-stamp {
+  min-width: 200px !important;
+  padding: 8px 14px !important;
+  border-left: 3px solid #d97706 !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.cluster-selection-workspace .status-stamp span {
+  font-size: 10px !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 700 !important;
+  color: #78716c !important;
+}
+
+.cluster-selection-workspace .status-stamp strong {
+  font-size: 13px !important;
+  color: #92400e !important;
+  margin-top: 2px !important;
+}
+
+/* Specialization Cohort Banner */
+.specialization-banner {
+  margin-top: 4px;
+  padding: 10px 18px;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 6px;
-  text-align: center;
+  justify-content: flex-start;
+  gap: 12px;
   border: 1px solid #fed7aa;
-  border-radius: 14px;
+  border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+  width: 100%;
 }
 
 .specialization-tag {
@@ -29,59 +78,59 @@
   text-transform: uppercase;
   background: #fefce8;
   border: 1px solid #fde68a;
-  padding: 2px 9px;
-  border-radius: 16px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .specialization-banner strong {
-  font-size: 15.5px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #1c1917;
   letter-spacing: -0.01em;
 }
 
+/* Cluster Grid & Cards (Medium-Small, Balanced Rectangles) */
 .cluster-grid {
-  margin-top: 20px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 14px;
+  width: 100%;
 }
 
 .cluster-card {
-  padding: 18px 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1.5px solid #e7e5e4;
-  border-radius: 16px;
+  border-radius: 14px;
   background: #ffffff;
   color: #1c1917;
   position: relative;
-  transition: all 0.18s ease-in-out;
+  transition: all 0.16s ease-in-out;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
   cursor: pointer;
   user-select: none;
+  min-height: 125px;
 }
 
 .cluster-card:hover {
   border-color: #d97706;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);
+  box-shadow: 0 3px 10px rgba(217, 119, 6, 0.08);
 }
 
 .cluster-card.selected {
   border: 2px solid #d97706;
   background: #ffffff;
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.12);
+  box-shadow: 0 3px 12px rgba(217, 119, 6, 0.12);
 }
 
 .cluster-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   width: 100%;
 }
 
@@ -89,21 +138,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: #fdfbf7;
   border: 1px solid #f5ede1;
+  flex-shrink: 0;
 }
 
 .cluster-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
 }
 
 .cluster-card.selected .cluster-icon {
   background: #fefce8;
   border-color: #fde68a;
+}
+
+.cluster-badge {
+  padding: 2px 8px;
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  color: #854d0e;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.cluster-check {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .cluster-body {
@@ -113,8 +180,15 @@
   gap: 4px;
 }
 
-.cluster-body strong {
-  font-size: 16.5px;
+.cluster-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cluster-title-row strong {
+  font-size: 15px;
   font-weight: 700;
   color: #1c1917;
 }
@@ -122,12 +196,11 @@
 .cluster-range-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 2px;
+  gap: 5px;
 }
 
 .cluster-range-pill span {
-  font-size: 11px;
+  font-size: 10.5px;
   color: #78716c;
   text-transform: uppercase;
   font-weight: 600;
@@ -136,81 +209,68 @@
 
 .cluster-range-pill em {
   font-style: normal;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #92400e;
   background: #fefce8;
   border: 1px solid #fde68a;
-  padding: 1px 7px;
-  border-radius: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
   font-family: var(--font-mono);
 }
 
 .cluster-desc {
-  font-size: 12.5px;
+  font-size: 12px;
   color: #57534e;
-  line-height: 1.45;
+  line-height: 1.4;
   margin-top: 2px;
 }
 
-.cluster-badge {
-  margin-top: 10px;
-  padding: 3px 9px;
-  background: #fefce8;
-  border: 1px solid #fde68a;
-  color: #854d0e;
-  font-size: 11px;
-  font-weight: 600;
-  border-radius: 16px;
-  display: inline-block;
-  align-self: flex-start;
-}
-
+/* Notice Banner */
 .cluster-notice {
-  margin-top: 22px;
-  padding: 14px 18px;
+  margin-top: 16px;
+  padding: 10px 14px;
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
   border: 1px solid #fde68a;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #fffdf5;
   color: #78716c;
-  font-size: 13px;
-  line-height: 1.5;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
+  font-size: 12px;
+  line-height: 1.45;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
 }
 
 .notice-icon-wrap {
   flex-shrink: 0;
-  margin-top: 2px;
   color: #d97706;
 }
 
+/* Bottom Action Buttons */
 .cluster-actions {
-  margin-top: 24px;
+  margin-top: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .secondary-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0.55rem 1.15rem;
+  gap: 6px;
+  padding: 0.5rem 1rem;
   background: #ffffff;
   color: #44403c;
   border: 1px solid #e7e5e4;
-  border-radius: 10px;
-  font-size: var(--text-sm);
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 600;
   box-shadow: var(--shadow-xs);
   transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .secondary-btn:hover {
@@ -222,13 +282,13 @@
 .primary-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0.55rem 1.25rem;
+  gap: 6px;
+  padding: 0.5rem 1.15rem;
   background: #d97706;
   color: #ffffff;
   border: 1px solid #b45309;
-  border-radius: 10px;
-  font-size: var(--text-sm);
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(180, 83, 9, 0.2);
   transition: all var(--transition-fast);
