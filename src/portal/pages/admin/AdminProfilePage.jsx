@@ -141,7 +141,6 @@ export default function AdminProfilePage({ admin }) {
               </div>
               <div>
                 <h2 className="admin-clean-profile-name">{profile.name}</h2>
-                <span className="admin-clean-profile-sub">Administrator ID: {profile.username}</span>
               </div>
             </div>
             {isEditing && (
