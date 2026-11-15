@@ -6,10 +6,10 @@
   --subject-navy: var(--institution-navy);
   --subject-blue: #356ae6;
   --subject-blue-secondary: #6b8fd6;
-  --subject-bg: #fffdf7;
+  --subject-bg: #fdf8ee;
   --subject-surface: #ffffff;
-  --subject-soft: #fefcf3;
-  --subject-selected: #fef9c3;
+  --subject-soft: #fbf3e2;
+  --subject-selected: #fef08a;
   --subject-selected-text: #854d0e;
   --subject-border: #f3eedf;
   --subject-divider: #e9e3d0;
@@ -734,6 +734,7 @@ select:focus-visible {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--wash);
 }
 .topbar {
   background: var(--institution-navy);
@@ -4128,10 +4129,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   --brand-blue-border: #bfdbfe;
   
   /* Semantic Surfaces */
-  --surface-base: #f8fafc;
+  --surface-base: #fdf8ee;
   --surface-card: #ffffff;
-  --surface-subtle: #f1f5f9;
-  --surface-muted: #e2e8f0;
+  --surface-subtle: #fbf3e2;
+  --surface-muted: #f4ecdc;
   
   /* Typography Colors */
   --text-main: #0f172a;
