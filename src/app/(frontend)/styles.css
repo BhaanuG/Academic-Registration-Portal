@@ -9062,6 +9062,32 @@ select:focus {
   cursor: not-allowed !important;
 }
 
+/* ==========================================================================
+   ADMIN PORTAL TOPBAR & NAVIGATION ALIGNMENT (MATCHING STUDENT PORTAL)
+   ========================================================================== */
+.page-shell-admin {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-base, #f8fafc);
+}
+
+.page-shell-admin .content.admin-content-workspace {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 36px 60px;
+}
+
+.page-shell-admin .admin-welcome {
+  margin-bottom: 28px;
+}
+
+.page-shell-admin .admin-stat-grid {
+  margin-top: 24px;
+}
+
 
 
 

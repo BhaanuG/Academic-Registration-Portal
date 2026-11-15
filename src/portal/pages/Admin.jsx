@@ -336,18 +336,49 @@ export default function Admin() {
   if (!admin) return <main className="admin-loading">Verifying administrator access…</main>;
 
   return (
-    <div className="admin-shell">
-      {menuOpen && <button className="admin-sidebar-scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      <aside className={`admin-sidebar ${menuOpen ? "open" : ""}`}>
-        <button className="admin-sidebar-close" aria-label="Close navigation" onClick={() => setMenuOpen(false)}><X size={20} /></button>
-        <div className="admin-sidebar-brand">
-          <Brand compact />
+    <div className="app-shell page-shell-admin">
+      {/* Top Application Header identical to Student Portal */}
+      <header className="topbar">
+        <div className="topbar-inner">
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              className="student-mobile-menu-btn md:hidden text-slate-300 hover:text-white"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+            <Brand compact />
+          </div>
+
+          <div className="portal-title">
+            <strong>Academic Registration Portal</strong>
+            <span>Central Administration · Administrator Console</span>
+          </div>
+
+          <div className="account-menu">
+            <div className="account-user-badge">
+              <div className="account-avatar-sm">
+                <ShieldCheck size={15} />
+              </div>
+              <div className="account-info-text">
+                <span className="account-role-label">Administrator</span>
+                <strong className="account-id-label">{admin.name}</strong>
+              </div>
+            </div>
+
+            <button type="button" className="signout-button" onClick={logout} title="Sign out of admin console">
+              <LogOut size={15} />
+              <span>Sign out</span>
+            </button>
+          </div>
         </div>
-        <div className="admin-identity">
-          <span>Central Administration</span>
-          <strong>Academic Registration Portal</strong>
-        </div>
-        <nav className="admin-nav">
+      </header>
+
+      {/* Primary Sub-Navigation Bar matching Student Portal */}
+      <nav className={`main-nav ${menuOpen ? "mobile-open" : ""}`} aria-label="Admin navigation">
+        <div className="nav-inner">
           {adminNavigation.map(([key, label]) => {
             const Icon = iconMap[key];
             const isActive = active === key;
@@ -355,53 +386,33 @@ export default function Admin() {
               <button
                 key={key}
                 type="button"
-                className={`admin-nav-item ${isActive ? "active" : ""}`}
+                className={`nav-item-btn ${isActive ? "active" : ""}`}
                 onClick={() => {
                   setMenuOpen(false);
                   navigate(`/KLEF/3-2/Admin/G-Bhaanu-Sai/${key}`);
                 }}
               >
-                <Icon size={18} />
+                <Icon size={16} className={isActive ? "text-blue-600" : "text-slate-400"} />
                 <span>{label}</span>
-                {isActive && <ChevronRight size={14} className="admin-nav-chevron" />}
               </button>
             );
           })}
-        </nav>
-        <button type="button" className="admin-logout" onClick={logout}>
-          <LogOut size={18} />
-          <span>Sign Out</span>
-        </button>
-      </aside>
+        </div>
+      </nav>
 
-      <main className="admin-main">
-        <header className="admin-topbar">
-          <button className="admin-menu-trigger" aria-label="Open navigation" onClick={() => setMenuOpen(true)}>
-            <Menu size={21} />
-          </button>
-          
-          <div className="admin-topbar-breadcrumb">
-            <span className="text-slate-400">Workspace</span>
-            <ChevronRight size={14} className="text-slate-400" />
-            <strong className="text-slate-800">{active}</strong>
-          </div>
+      {/* Active Breadcrumb Ribbon matching Student Portal */}
+      <div className="portal-breadcrumb-ribbon">
+        <div className="breadcrumb-inner">
+          <span className="breadcrumb-root">Admin Portal</span>
+          <ChevronRight size={13} className="text-slate-400" />
+          <span className="breadcrumb-current">
+            {adminNavigation.find(([k]) => k === active)?.[1] || active}
+          </span>
+        </div>
+      </div>
 
-          <div className="admin-topbar-right">
-            <div className="admin-user-info">
-              <span>Authorized Administrator</span>
-              <strong>{admin.name}</strong>
-            </div>
-            <div className="admin-avatar" title={admin.name}>
-              {admin.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-            </div>
-            <button type="button" className="admin-topbar-logout" onClick={logout}>
-              <LogOut size={16} />
-              <span>Sign out</span>
-            </button>
-          </div>
-        </header>
-
-        <div className="admin-content-area">
+      <main className="content admin-content-workspace">
+        <div className="page-transition" key={active}>
           {active === "Dashboard" && (
             <AdminDashboard
               summary={summary}
