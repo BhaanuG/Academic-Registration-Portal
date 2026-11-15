@@ -194,61 +194,79 @@
 
 .cohort-chip {
   background: #f8fafc;
-  border: 1.5px solid var(--border-strong);
-  padding: 8px 14px;
+  border: 1.5px solid var(--border-strong, #cbd5e1);
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  text-align: right;
+  text-align: center;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
-.cohort-chip span {
-  display: block;
+.cohort-chip .cohort-header-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.cohort-chip .cohort-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-  font-weight: 600;
-}
-
-.cohort-chip strong {
-  display: block;
-  font-size: var(--text-sm);
-  color: #92400e;
   font-weight: 700;
 }
 
+.cohort-chip .cohort-val {
+  font-size: var(--text-sm);
+  color: #92400e;
+  font-weight: 800;
+}
+
 .cohort-chip .cohort-ltps-matrix {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6px;
-  background: #ffffff;
-  border: 1px solid var(--border-default, #e2e8f0);
-  border-radius: 4px;
-  padding: 3px 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  border-top: 1px solid var(--border-strong, #cbd5e1);
+  padding-top: 5px;
 }
 
 .cohort-chip .ltps-matrix-labels,
 .cohort-chip .ltps-matrix-values {
   display: grid;
-  grid-template-columns: repeat(4, 16px);
-  gap: 4px;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
   text-align: center;
 }
 
 .cohort-chip .ltps-matrix-labels span {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  color: #64748b;
-  letter-spacing: 0.02em;
+  color: #475569;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-right: 1px solid var(--border-strong, #cbd5e1);
+}
+
+.cohort-chip .ltps-matrix-labels span:last-child {
+  border-right: none;
 }
 
 .cohort-chip .ltps-matrix-values span {
-  font-size: 11px;
-  font-weight: 750;
+  font-size: 12px;
+  font-weight: 800;
   color: #0f172a;
   font-family: var(--font-mono, monospace);
+  padding: 2px 6px;
+  border-right: 1px solid var(--border-strong, #cbd5e1);
+}
+
+.cohort-chip .ltps-matrix-values span:last-child {
+  border-right: none;
 }
 
 /* Primary Lecture Section Card */

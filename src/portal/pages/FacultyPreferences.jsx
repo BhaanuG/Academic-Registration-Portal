@@ -177,14 +177,16 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                   </button>
 
                   <div className="cohort-chip">
-                    <span>Assigned cohort</span>
-                    <strong>
-                      {cluster === "Cluster 1" || cluster === "C 1" || cluster === "C1"
-                        ? "C 1"
-                        : cluster === "Cluster 2" || cluster === "C 2" || cluster === "C2"
-                        ? "C 2"
-                        : cluster?.replace(/Cluster\s*/i, "C ") || "C 2"}
-                    </strong>
+                    <div className="cohort-header-line">
+                      <span className="cohort-label">Assigned Cluster:</span>
+                      <strong className="cohort-val">
+                        {cluster === "Cluster 1" || cluster === "C 1" || cluster === "C1"
+                          ? "C 1"
+                          : cluster === "Cluster 2" || cluster === "C 2" || cluster === "C2"
+                          ? "C 2"
+                          : cluster?.replace(/Cluster\s*/i, "C ") || "C 2"}
+                      </strong>
+                    </div>
                     {subject?.ltps && (
                       <div className="cohort-ltps-matrix" title="Lecture - Tutorial - Practical - Skill Hours">
                         <div className="ltps-matrix-labels">
