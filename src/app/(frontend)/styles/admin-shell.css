@@ -1,6 +1,49 @@
-/* ==========================================================================
-   ADMINISTRATIVE PLATFORM WORKSPACE REFINEMENTS
-   ========================================================================== */
+/* Global Admin Search Box & Filter Bar Standardization */
+.admin-search-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: #fdfbf7 !important;
+  border: 1px solid #ebdcc5 !important;
+  border-radius: 8px !important;
+  padding: 0 12px !important;
+  height: 40px !important;
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+}
+
+.admin-search-box:focus-within {
+  border-color: #d97706 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1) !important;
+}
+
+.admin-search-box svg {
+  flex-shrink: 0;
+  color: #78716c !important;
+}
+
+.admin-search-box input,
+.admin-search-input {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: var(--text-sm) !important;
+  color: #1c1917 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none !important;
+}
+
+.admin-search-box input:focus,
+.admin-search-input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
 .admin-shell {
   min-height: 100vh;
   background: var(--surface-base);
