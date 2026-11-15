@@ -62,11 +62,11 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
             >
               <div className="cluster-card-header">
                 <span className="cluster-icon" aria-hidden="true">
-                  <Layers size={22} className={selected ? "text-blue-600" : "text-slate-400"} />
+                  <Layers size={20} className={selected ? "text-amber-600" : "text-stone-400"} />
                 </span>
                 {selected && (
                   <span className="cluster-check">
-                    <CheckCircle2 size={20} className="text-blue-600" />
+                    <CheckCircle2 size={18} className="text-amber-600" />
                   </span>
                 )}
               </div>
@@ -92,7 +92,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
 
       <div className="cluster-notice">
         <div className="notice-icon-wrap">
-          <Info size={18} className="text-blue-600" />
+          <Info size={17} className="text-amber-600" />
         </div>
         <span>
           Your cluster is based on your specialization cohort. All course buckets will display faculty

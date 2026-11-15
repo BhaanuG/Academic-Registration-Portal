@@ -133,9 +133,13 @@
 }
 
 .nav-item-btn.active {
-  color: #2563eb;
-  border-bottom-color: #2563eb;
+  color: #b45309;
+  border-bottom-color: #d97706;
   background: transparent;
+}
+
+.nav-item-btn.active svg {
+  color: #b45309 !important;
 }
 
 .nav-item-badge {
@@ -148,13 +152,13 @@
 }
 
 .nav-item-badge.active-badge {
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: #fef3c7;
+  color: #92400e;
 }
 
 .portal-breadcrumb-ribbon {
-  background: #f1f5f9;
-  border-bottom: 1px solid var(--border-default);
+  background: #fbf9f1;
+  border-bottom: 1px solid #eee8d5;
   padding: 8px 36px;
 }
 

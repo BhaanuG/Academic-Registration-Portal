@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FACULTY DIRECTORY REFINED BORDERS & POLISHED TABLE STYLES
+   FACULTY DIRECTORY REFINED BORDERS & POLISHED TABLE STYLES (WARM GOLD)
    ========================================================================== */
 .faculty-directory-page .admin-filter-bar {
   border: 1.5px solid #cbd5e1 !important;
@@ -13,30 +13,30 @@
 .faculty-directory-page .admin-search-box {
   border: 1.5px solid #cbd5e1 !important;
   border-radius: 8px !important;
-  background: #f8fafc !important;
+  background: #fdfbf7 !important;
   height: 40px !important;
 }
 
 .faculty-directory-page .admin-search-box:focus-within {
-  border-color: #2563eb !important;
+  border-color: #d97706 !important;
   background: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1) !important;
 }
 
 .faculty-directory-page .admin-filter-select {
   border: 1.5px solid #cbd5e1 !important;
   border-radius: 8px !important;
   height: 40px !important;
-  background: #f8fafc !important;
+  background: #fdfbf7 !important;
   font-size: 13px !important;
   color: #1e293b !important;
   padding: 0 12px !important;
 }
 
 .faculty-directory-page .admin-filter-select:focus {
-  border-color: #2563eb !important;
+  border-color: #d97706 !important;
   background: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1) !important;
 }
 
 .faculty-directory-page .admin-table-container {
@@ -53,8 +53,8 @@
 }
 
 .faculty-directory-page .admin-data-table thead {
-  background: #f1f5f9 !important;
-  border-bottom: 2px solid #cbd5e1 !important;
+  background: #fefcf3 !important;
+  border-bottom: 2px solid #fde68a !important;
 }
 
 .faculty-directory-page .admin-data-table th {
@@ -63,8 +63,8 @@
   font-weight: 700 !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  color: #475569 !important;
-  border-right: 1px solid #e2e8f0 !important;
+  color: #78716c !important;
+  border-right: 1px solid #f5ede1 !important;
 }
 
 .faculty-directory-page .admin-data-table th:last-child {
@@ -75,8 +75,8 @@
   padding: 13px 18px !important;
   font-size: 13px !important;
   color: #1e293b !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  border-right: 1px solid #f1f5f9 !important;
+  border-bottom: 1px solid #f5ede1 !important;
+  border-right: 1px solid #faf8f3 !important;
 }
 
 .faculty-directory-page .admin-data-table td:last-child {
@@ -84,7 +84,7 @@
 }
 
 .faculty-directory-page .admin-data-table tbody tr:hover {
-  background: #f8faff !important;
+  background: #fffdf5 !important;
 }
 
 .faculty-directory-page .badge-component-tag {
@@ -94,9 +94,9 @@
   width: 26px !important;
   height: 26px !important;
   border-radius: 6px !important;
-  background: #eff6ff !important;
-  border: 1.5px solid #93c5fd !important;
-  color: #1d4ed8 !important;
+  background: #fefce8 !important;
+  border: 1.5px solid #fde68a !important;
+  color: #92400e !important;
   font-size: 11px !important;
   font-weight: 700 !important;
 }
@@ -117,11 +117,11 @@
 }
 
 .faculty-download-icon-btn:hover {
-  background: #eff6ff !important;
-  border-color: #2563eb !important;
-  color: #1d4ed8 !important;
+  background: #fefce8 !important;
+  border-color: #d97706 !important;
+  color: #92400e !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15) !important;
 }
 
 .faculty-download-icon-btn:active {
