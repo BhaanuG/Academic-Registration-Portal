@@ -42,7 +42,7 @@ export default function PortalShell({ page, setPage, onLogout, studentId, childr
           <div className="flex items-center gap-4">
             <button
               type="button"
-              className="student-mobile-menu-btn md:hidden text-slate-300 hover:text-white"
+              className="student-mobile-menu-btn text-slate-300 hover:text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
             >

@@ -350,7 +350,7 @@ export default function Admin() {
           <div className="flex items-center gap-4">
             <button
               type="button"
-              className="student-mobile-menu-btn md:hidden text-slate-300 hover:text-white"
+              className="student-mobile-menu-btn text-slate-300 hover:text-white"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle navigation menu"
             >
