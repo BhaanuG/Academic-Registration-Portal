@@ -199,14 +199,14 @@
 
 .developer-quote {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(20px, 2.4vw, 26px);
-  line-height: 1.35;
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 1.4;
   color: #1e293b;
   font-style: italic;
   font-weight: 600;
-  border-left: 3px solid #2563eb;
-  padding-left: 18px;
-  margin: 0 0 28px 0;
+  border-left: 2.5px solid #2563eb;
+  padding-left: 14px;
+  margin: 0 0 22px 0;
   max-width: 980px;
 }
 
