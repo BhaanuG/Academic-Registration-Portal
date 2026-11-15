@@ -105,7 +105,7 @@ export default function Overview({ studentId, goTo }) {
               </div>
               <div>
                 <dt>Academic Batch</dt>
-                <dd>2024–2028 (Regular)</dd>
+                <dd>2024–2028</dd>
               </div>
               <div>
                 <dt>Current Term Level</dt>
