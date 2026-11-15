@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@payload-config": ["./src/payload.config.js"]
+    },
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*", "next.config.mjs", "figma-image-loader.js", "oxfmt.config.js"],
+  "exclude": ["node_modules", ".next", "dist"]
+}
