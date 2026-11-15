@@ -288,9 +288,7 @@ export const componentNames = {
   P: "Practical",
   S: "Skill",
 };
-export const initialSelections = Object.fromEntries(
-  buckets.map((bucket) => [bucket.id, bucket.subjects[0].code]),
-);
+export const initialSelections = {};
 export function getSubSectionFaculty(subjectCode, secNum, subLetter, component) {
   const pool = faculty.filter((person) => person.components.includes(component));
   if (!pool.length) return null;

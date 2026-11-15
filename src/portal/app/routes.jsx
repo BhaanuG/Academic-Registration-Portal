@@ -78,7 +78,7 @@ function PortalRoute() {
           prefs={preferences}
           cluster={cluster || "Cluster 2"}
           onResetAll={() => {
-            setSelections(initialSelections);
+            setSelections({});
             setPreferences({});
           }}
         />
