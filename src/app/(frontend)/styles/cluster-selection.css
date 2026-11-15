@@ -1,34 +1,58 @@
 /* ==========================================================================
-   CLUSTER SELECTION SPECIFICATION STYLES (CLEAN, FUNCTIONAL & DIRECT)
+   CLUSTER SELECTION SPECIFICATION STYLES (EXPAND BOX LENGTH TO FOOTER, PERFECT FIT)
    ========================================================================== */
 
+.page-shell-cluster {
+  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .page-shell-cluster .content {
-  padding: 20px 32px 32px !important;
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 16px 36px 16px !important;
+  min-height: 0 !important;
+}
+
+.page-shell-cluster .content > .page-transition {
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
 }
 
 .cluster-selection-workspace {
-  max-width: 900px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 0 !important;
 }
 
 .cluster-selection-workspace .page-heading {
-  margin-bottom: 16px !important;
-  padding-bottom: 12px !important;
+  flex: 0 0 auto !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 8px !important;
   border-bottom: 1px solid #ebdcc5 !important;
 }
 
 .cluster-selection-workspace .page-heading h1 {
   font-size: 22px !important;
   font-weight: 700 !important;
-  margin: 2px 0 4px !important;
+  margin: 0 0 2px !important;
   color: #1c1917 !important;
+  letter-spacing: -0.02em !important;
 }
 
 .cluster-selection-workspace .page-heading .heading-description {
   font-size: 13px !important;
   color: #78716c !important;
+  line-height: 1.35 !important;
 }
 
 .cluster-selection-workspace .status-stamp {
@@ -55,18 +79,20 @@
 
 /* Specialization Banner */
 .specialization-banner {
-  margin-top: 4px;
+  flex: 0 0 auto !important;
+  margin-top: 2px;
   padding: 10px 18px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  border: 1px solid #fed7aa;
+  border: 1.5px solid #ebdcc5;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .specialization-tag {
@@ -88,17 +114,20 @@
   color: #1c1917;
 }
 
-/* Cluster Grid & Selection Cards */
+/* Cluster Grid & Selection Cards (Expanded to fill available height like overview cards) */
 .cluster-grid {
-  margin-top: 16px;
+  flex: 1 1 0% !important;
+  margin-top: 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 20px;
   width: 100%;
+  align-items: stretch !important;
+  min-height: 0 !important;
 }
 
 .cluster-card {
-  padding: 16px 18px;
+  padding: 22px 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,10 +137,11 @@
   color: #1c1917;
   position: relative;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
   cursor: pointer;
   user-select: none;
-  min-height: 125px;
+  height: 100% !important;
+  box-sizing: border-box;
 }
 
 .cluster-card:hover {
@@ -126,6 +156,7 @@
 }
 
 .cluster-card-header {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -171,10 +202,12 @@
 }
 
 .cluster-body {
-  margin-top: 12px;
+  flex: 1 1 auto;
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 8px;
 }
 
 .cluster-title-row {
@@ -185,7 +218,7 @@
 }
 
 .cluster-title-row strong {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #1c1917;
 }
@@ -197,7 +230,7 @@
 }
 
 .cluster-range-pill span {
-  font-size: 10.5px;
+  font-size: 11px;
   color: #78716c;
   text-transform: uppercase;
   font-weight: 600;
@@ -206,27 +239,28 @@
 
 .cluster-range-pill em {
   font-style: normal;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #92400e;
   background: #fefce8;
   border: 1px solid #fde68a;
-  padding: 1px 6px;
+  padding: 2px 7px;
   border-radius: 4px;
   font-family: var(--font-mono);
 }
 
 .cluster-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #57534e;
-  line-height: 1.4;
-  margin-top: 2px;
+  line-height: 1.45;
+  margin-top: 4px;
 }
 
 /* Notice Banner */
 .cluster-notice {
-  margin-top: 16px;
-  padding: 10px 14px;
+  flex: 0 0 auto !important;
+  margin-top: 12px;
+  padding: 9px 16px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -238,6 +272,7 @@
   line-height: 1.45;
   width: 100%;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+  box-sizing: border-box;
 }
 
 .notice-icon-wrap {
@@ -247,7 +282,8 @@
 
 /* Action Buttons */
 .cluster-actions {
-  margin-top: 18px;
+  flex: 0 0 auto !important;
+  margin-top: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
