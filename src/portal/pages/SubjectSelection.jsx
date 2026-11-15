@@ -100,14 +100,20 @@ export default function Subjects({ selections, setSelections, goTo }) {
               const selectedCode = selections[item.id];
               const isNone = selectedCode === "NONE";
               const subject = item.subjects.find((s) => s.code === selectedCode);
-              const isSelected = Boolean(subject) || isNone;
+              const isRegisteredCourse = Boolean(subject) && !isNone;
               const isCurrent = active === item.id;
+
+              const statusClass = isRegisteredCourse
+                ? "completed"
+                : isNone
+                ? "opted-none"
+                : "pending";
 
               return (
                 <button
                   key={item.id}
                   type="button"
-                  className={`bucket-nav-item ${isCurrent ? "active" : ""} ${isSelected ? "completed" : "pending"}`}
+                  className={`bucket-nav-item ${isCurrent ? "active" : ""} ${statusClass}`}
                   aria-current={isCurrent ? "step" : undefined}
                   onClick={() => {
                     setActive(item.id);
@@ -118,8 +124,8 @@ export default function Subjects({ selections, setSelections, goTo }) {
                     <strong>{item.short}</strong>
                     <small>
                       {isNone
-                        ? "None of the above"
-                        : subject
+                        ? "Not selected (None)"
+                        : isRegisteredCourse
                         ? `${subject.credits} credits chosen`
                         : "Selection needed"}
                     </small>
@@ -133,6 +139,8 @@ export default function Subjects({ selections, setSelections, goTo }) {
             <div className="nav-legend">
               <span className="legend-dot completed" />
               <span>Selected</span>
+              <span className="legend-dot opted-none" />
+              <span>None chosen</span>
               <span className="legend-dot pending" />
               <span>Pending</span>
             </div>

@@ -224,6 +224,36 @@
   color: #047857 !important;
 }
 
+/* Opted out or None of the above - never green */
+.subject-selection-page .bucket-nav-item.opted-none {
+  background: #fdfbf7 !important;
+  border-bottom: 1px solid #ebdcc5 !important;
+}
+
+.subject-selection-page .bucket-nav-item.opted-none:hover {
+  background: #fef7ed !important;
+}
+
+.subject-selection-page .bucket-nav-item.opted-none .nav-bucket-badge {
+  color: #78716c !important;
+  background: #f5f0ea !important;
+  border-color: #e7e0d5 !important;
+}
+
+.subject-selection-page .bucket-nav-item.opted-none .nav-bucket-info strong {
+  color: #44403c !important;
+}
+
+.subject-selection-page .bucket-nav-item.opted-none .nav-bucket-info small {
+  color: #92400e !important;
+  font-weight: 600;
+}
+
+.subject-selection-page .bucket-nav-item.opted-none.active {
+  background: #fffdf5 !important;
+  box-shadow: inset 4px 0 #d97706 !important;
+}
+
 .subject-selection-page .bucket-nav-item.active {
   background: #ffffff;
   box-shadow: inset 4px 0 #d97706;
@@ -282,6 +312,10 @@
 
 .subject-selection-page .legend-dot.completed {
   background: #16a34a;
+}
+
+.subject-selection-page .legend-dot.opted-none {
+  background: #d97706;
 }
 
 .subject-selection-page .legend-dot.pending {
