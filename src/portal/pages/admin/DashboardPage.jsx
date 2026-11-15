@@ -50,7 +50,7 @@ export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
 
       {/* KPI Stats Grid matching the pill capsule card format */}
       <div className="admin-stat-grid">
-        {statCards.map(({ key, category, count, icon: Icon, accent, actionText }) => (
+        {statCards.map(({ key, category, count, icon: Icon, accent }) => (
           <div
             key={key}
             className={`admin-stat-pill-card accent-${accent}`}
@@ -72,10 +72,6 @@ export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
               <div className={`stat-pill-icon-circle icon-circle-${accent}`}>
                 <Icon size={20} />
               </div>
-            </div>
-
-            <div className="stat-pill-footer">
-              <span className={`stat-pill-link link-${accent}`}>{actionText}</span>
             </div>
           </div>
         ))}
