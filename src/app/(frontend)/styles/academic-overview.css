@@ -1,24 +1,28 @@
 /* ==========================================================================
-   ACADEMIC OVERVIEW DASHBOARD STYLES (FIT VIEWPORT PRECISELY WITHOUT SCROLL)
+   ACADEMIC OVERVIEW DASHBOARD STYLES (FILL WORKSPACE WITH DYNAMIC VH PROPORTIONS)
    ========================================================================== */
 
 .page-shell-overview .content {
-  padding: 16px 36px 16px !important;
+  padding: clamp(12px, 1.8vh, 22px) 36px clamp(12px, 1.8vh, 22px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
 }
 
 .overview-container {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .overview-container .page-heading {
-  margin-bottom: 14px !important;
-  padding-bottom: 10px !important;
+  margin-bottom: clamp(10px, 1.6vh, 18px) !important;
+  padding-bottom: clamp(8px, 1.2vh, 12px) !important;
   border-bottom: 1px solid #ebdcc5 !important;
 }
 
 .overview-container .page-heading h1 {
-  font-size: 23px !important;
+  font-size: clamp(21px, 2.3vh, 24px) !important;
   font-weight: 700 !important;
   margin: 0 0 2px !important;
   color: #1c1917 !important;
@@ -34,24 +38,27 @@
 .overview-grid {
   display: grid !important;
   grid-template-columns: minmax(0, 1.45fr) minmax(330px, 0.95fr) !important;
-  gap: 20px !important;
+  gap: clamp(16px, 2.2vh, 24px) !important;
   align-items: stretch !important;
-  margin-top: 4px !important;
+  margin-top: 2px !important;
 }
 
 .plain-section.academic-section,
 .counselor-panel {
-  padding: 18px 24px !important;
+  padding: clamp(16px, 2.4vh, 26px) clamp(20px, 2vw, 28px) !important;
   border: 1.5px solid #ebdcc5 !important;
   border-radius: 12px !important;
   background: #ffffff !important;
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 
 .academic-section .section-title {
-  padding-bottom: 10px !important;
+  padding-bottom: clamp(8px, 1.2vh, 12px) !important;
   border-bottom: 1px solid #f3eedf !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 2px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -59,7 +66,7 @@
 
 .academic-section .section-title h2,
 .counselor-panel h2 {
-  font-size: 17.5px !important;
+  font-size: clamp(16.5px, 1.9vh, 18.5px) !important;
   font-weight: 700 !important;
   color: #1c1917 !important;
   margin: 0 !important;
@@ -67,19 +74,23 @@
 }
 
 .counselor-panel h2 {
-  margin-bottom: 4px !important;
+  margin-bottom: 2px !important;
 }
 
 .academic-grid {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 0 24px !important;
+  flex: 1 !important;
 }
 
 .academic-grid > div {
   min-height: auto !important;
-  padding: 9.5px 0 !important;
+  padding: clamp(8px, 1.25vh, 13px) 0 !important;
   border-bottom: 1px solid #f5ede1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
 .academic-grid dt,
@@ -94,16 +105,27 @@
 
 .academic-grid dd,
 .counselor-panel dd {
-  font-size: 13.5px !important;
+  font-size: clamp(13px, 1.45vh, 14px) !important;
   color: #1c1917 !important;
   font-weight: 600 !important;
   margin: 0 !important;
   line-height: 1.35 !important;
 }
 
+.counselor-panel dl {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+  margin: 0 !important;
+}
+
 .counselor-panel dl > div {
-  padding: 9.5px 0 !important;
+  padding: clamp(8px, 1.25vh, 13px) 0 !important;
   border-bottom: 1px solid #f5ede1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
 .counselor-badge {
