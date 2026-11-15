@@ -9105,36 +9105,36 @@ select:focus {
 .page-shell-admin .admin-stat-grid {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 16px !important;
-  margin-top: 6px !important;
+  gap: 12px !important;
+  margin-top: 4px !important;
 }
 
-/* Rounded Pill / Capsule Stat Cards with Clean Neutral Styling */
+/* Compact Rounded Pill / Capsule Stat Cards */
 .page-shell-admin .admin-stat-pill-card {
   background: #ffffff !important;
   border: 1.5px solid #cbd5e1 !important;
-  border-radius: 24px !important;
-  padding: 16px 20px 14px !important;
+  border-radius: 16px !important;
+  padding: 10px 14px 8px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  min-height: 112px !important;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+  min-height: 74px !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04) !important;
   cursor: pointer !important;
-  transition: all 0.18s ease-in-out !important;
+  transition: all 0.16s ease-in-out !important;
 }
 
 .page-shell-admin .admin-stat-pill-card:hover {
   border-color: #2563eb !important;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1) !important;
-  transform: translateY(-2px) !important;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.08) !important;
+  transform: translateY(-1px) !important;
 }
 
 .page-shell-admin .stat-pill-body {
   display: flex !important;
-  align-items: flex-start !important;
+  align-items: center !important;
   justify-content: space-between !important;
-  gap: 12px !important;
+  gap: 8px !important;
 }
 
 .page-shell-admin .stat-pill-main {
@@ -9143,7 +9143,7 @@ select:focus {
 }
 
 .page-shell-admin .stat-pill-category {
-  font-size: 10.5px !important;
+  font-size: 9.5px !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
@@ -9151,17 +9151,17 @@ select:focus {
 }
 
 .page-shell-admin .stat-pill-value {
-  font-size: 24px !important;
+  font-size: 19px !important;
   font-weight: 800 !important;
-  line-height: 1.2 !important;
-  margin-top: 4px !important;
+  line-height: 1.1 !important;
+  margin-top: 2px !important;
   color: #0f172a !important;
 }
 
 /* Neutral clean circular icon indicator */
 .page-shell-admin .stat-pill-icon-circle {
-  width: 44px !important;
-  height: 44px !important;
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
@@ -9171,12 +9171,17 @@ select:focus {
   color: #334155 !important;
 }
 
+.page-shell-admin .stat-pill-icon-circle svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
 .page-shell-admin .stat-pill-footer {
-  margin-top: 10px !important;
+  margin-top: 5px !important;
 }
 
 .page-shell-admin .stat-pill-link {
-  font-size: 12px !important;
+  font-size: 10.5px !important;
   font-weight: 600 !important;
   color: #2563eb !important;
   display: inline-flex !important;
