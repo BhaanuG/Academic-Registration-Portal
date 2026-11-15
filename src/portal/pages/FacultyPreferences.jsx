@@ -125,7 +125,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                   <strong>{item?.name || "No subject selected"}</strong>
                   {item ? (
                     <small>
-                      {item.code} · {item.credits} credits · L-T-P-S: {item.ltps ? item.ltps.join("-") : "3-0-2-0"}
+                      {item.code} · {item.credits} credits
                     </small>
                   ) : (
                     <small>Select a subject in {bucket.id} to continue</small>
@@ -178,7 +178,18 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
 
                   <div className="cohort-chip">
                     <span>Assigned cohort</span>
-                    <strong>{cluster || "Cluster 2"}</strong>
+                    <strong>
+                      {cluster === "Cluster 1" || cluster === "C 1" || cluster === "C1"
+                        ? "C 1"
+                        : cluster === "Cluster 2" || cluster === "C 2" || cluster === "C2"
+                        ? "C 2"
+                        : cluster?.replace(/Cluster\s*/i, "C ") || "C 2"}
+                    </strong>
+                    {subject?.ltps && (
+                      <small className="cohort-ltps-sub">
+                        L-T-P-S: {subject.ltps.join("-")}
+                      </small>
+                    )}
                   </div>
                 </div>
               </header>

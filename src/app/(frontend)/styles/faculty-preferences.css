@@ -217,6 +217,15 @@
   font-weight: 700;
 }
 
+.cohort-chip .cohort-ltps-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-navy, #1e293b);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
 /* Primary Lecture Section Card */
 .lecture-preference-card {
   padding: 1.75rem 2rem;
