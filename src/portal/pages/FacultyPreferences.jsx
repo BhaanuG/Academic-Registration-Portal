@@ -177,7 +177,7 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                   </button>
 
                   <div className="cohort-chip">
-                    <div className="cohort-header-line">
+                    <div className="cohort-chip-top">
                       <span className="cohort-label">Assigned Cluster:</span>
                       <strong className="cohort-val">
                         {cluster === "Cluster 1" || cluster === "C 1" || cluster === "C1"
@@ -188,14 +188,14 @@ export default function Preferences({ selections, prefs, setPrefs, cluster }) {
                       </strong>
                     </div>
                     {subject?.ltps && (
-                      <div className="cohort-ltps-matrix" title="Lecture - Tutorial - Practical - Skill Hours">
-                        <div className="ltps-matrix-labels">
+                      <div className="cohort-ltps-grid-table" title="Lecture | Tutorial | Practical | Skill Credit Weight">
+                        <div className="grid-row grid-head">
                           <span>L</span>
                           <span>T</span>
                           <span>P</span>
                           <span>S</span>
                         </div>
-                        <div className="ltps-matrix-values">
+                        <div className="grid-row grid-body">
                           <span>{subject.ltps[0]}</span>
                           <span>{subject.ltps[1]}</span>
                           <span>{subject.ltps[2]}</span>

@@ -193,79 +193,86 @@
 }
 
 .cohort-chip {
-  background: #f8fafc;
+  background: #ffffff;
   border: 1.5px solid var(--border-strong, #cbd5e1);
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
+  padding: 0;
+  border-radius: var(--radius-md, 8px);
   text-align: center;
   flex-shrink: 0;
-  display: flex;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: inline-flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
 }
 
-.cohort-chip .cohort-header-line {
+.cohort-chip-top {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  white-space: nowrap;
+  padding: 6px 12px;
+  border-bottom: 1.5px solid var(--border-strong, #cbd5e1);
+  background: #f8fafc;
 }
 
-.cohort-chip .cohort-label {
+.cohort-chip-top .cohort-label {
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
   font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.02em;
 }
 
-.cohort-chip .cohort-val {
-  font-size: var(--text-sm);
-  color: #92400e;
+.cohort-chip-top .cohort-val {
+  font-size: 13px;
   font-weight: 800;
+  color: #92400e;
 }
 
-.cohort-chip .cohort-ltps-matrix {
+.cohort-ltps-grid-table {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  border-top: 1px solid var(--border-strong, #cbd5e1);
-  padding-top: 5px;
 }
 
-.cohort-chip .ltps-matrix-labels,
-.cohort-chip .ltps-matrix-values {
+.cohort-ltps-grid-table .grid-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  text-align: center;
 }
 
-.cohort-chip .ltps-matrix-labels span {
+.cohort-ltps-grid-table .grid-head {
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border-strong, #cbd5e1);
+}
+
+.cohort-ltps-grid-table .grid-head span {
   font-size: 11px;
   font-weight: 800;
-  color: #475569;
-  letter-spacing: 0.04em;
-  padding: 2px 6px;
+  color: #334155;
+  padding: 3px 0;
+  text-align: center;
   border-right: 1px solid var(--border-strong, #cbd5e1);
 }
 
-.cohort-chip .ltps-matrix-labels span:last-child {
+.cohort-ltps-grid-table .grid-head span:last-child {
   border-right: none;
 }
 
-.cohort-chip .ltps-matrix-values span {
+.cohort-ltps-grid-table .grid-body {
+  background: #ffffff;
+}
+
+.cohort-ltps-grid-table .grid-body span {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 750;
   color: #0f172a;
+  padding: 4px 0;
+  text-align: center;
   font-family: var(--font-mono, monospace);
-  padding: 2px 6px;
   border-right: 1px solid var(--border-strong, #cbd5e1);
 }
 
-.cohort-chip .ltps-matrix-values span:last-child {
+.cohort-ltps-grid-table .grid-body span:last-child {
   border-right: none;
 }
 
