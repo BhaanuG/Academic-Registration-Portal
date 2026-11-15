@@ -2,10 +2,38 @@ import { BookOpen, Boxes, GraduationCap, UserRound, Plus, ArrowRight, ShieldChec
 
 export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
   const statCards = [
-    { key: "Students", label: "Registered Students", count: summary.students.length, icon: GraduationCap, color: "text-blue-600", bg: "bg-blue-50" },
-    { key: "Faculty", label: "Faculty Allocations", count: summary.faculty.length, icon: UserRound, color: "text-indigo-600", bg: "bg-indigo-50" },
-    { key: "Buckets", label: "Curriculum Buckets", count: summary.buckets.length, icon: Boxes, color: "text-amber-600", bg: "bg-amber-50" },
-    { key: "Courses", label: "Offered Courses", count: summary.courses.length, icon: BookOpen, color: "text-emerald-600", bg: "bg-emerald-50" },
+    {
+      key: "Students",
+      category: "TOTAL REGISTERED STUDENTS",
+      count: summary.students.length,
+      icon: GraduationCap,
+      accent: "blue",
+      actionText: "Manage Students List →",
+    },
+    {
+      key: "Faculty",
+      category: "TOTAL FACULTY ALLOCATIONS",
+      count: summary.faculty.length,
+      icon: UserRound,
+      accent: "indigo",
+      actionText: "Manage Faculty Allocations →",
+    },
+    {
+      key: "Buckets",
+      category: "ACTIVE CURRICULUM BUCKETS",
+      count: summary.buckets.length,
+      icon: Boxes,
+      accent: "amber",
+      actionText: "Manage Curriculum Buckets →",
+    },
+    {
+      key: "Courses",
+      category: "TOTAL OFFERED COURSES",
+      count: summary.courses.length,
+      icon: BookOpen,
+      accent: "emerald",
+      actionText: "Manage Course Catalog →",
+    },
   ];
 
   return (
@@ -20,12 +48,12 @@ export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
         </div>
       </div>
 
-      {/* KPI Stats Grid */}
+      {/* KPI Stats Grid matching the pill capsule card format */}
       <div className="admin-stat-grid">
-        {statCards.map(({ key, label, count, icon: Icon, color, bg }) => (
+        {statCards.map(({ key, category, count, icon: Icon, accent, actionText }) => (
           <div
             key={key}
-            className="admin-stat-card"
+            className={`admin-stat-pill-card accent-${accent}`}
             role="button"
             tabIndex={0}
             onClick={() => onNavigate(key)}
@@ -36,19 +64,18 @@ export default function AdminDashboard({ summary, onNavigate, onQuickCreate }) {
               }
             }}
           >
-            <div className="stat-card-top">
-              <div className={`stat-icon-wrap ${bg}`}>
-                <Icon size={20} className={color} />
+            <div className="stat-pill-body">
+              <div className="stat-pill-main">
+                <span className="stat-pill-category">{category}</span>
+                <strong className="stat-pill-value">{count}</strong>
               </div>
-              <span className="stat-open-link">
-                <span>Manage</span>
-                <ArrowRight size={14} />
-              </span>
+              <div className={`stat-pill-icon-circle icon-circle-${accent}`}>
+                <Icon size={20} />
+              </div>
             </div>
 
-            <div className="stat-card-bottom">
-              <strong className="stat-count">{count}</strong>
-              <span className="stat-label">{label}</span>
+            <div className="stat-pill-footer">
+              <span className={`stat-pill-link link-${accent}`}>{actionText}</span>
             </div>
           </div>
         ))}

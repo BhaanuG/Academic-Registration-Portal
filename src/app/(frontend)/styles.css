@@ -9105,70 +9105,164 @@ select:focus {
 .page-shell-admin .admin-stat-grid {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 14px !important;
+  gap: 16px !important;
+  margin-top: 6px !important;
+}
+
+/* Rounded Pill / Capsule Stat Cards matching reference design */
+.page-shell-admin .admin-stat-pill-card {
+  background: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 16px 20px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 112px !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease-in-out !important;
+}
+
+.page-shell-admin .admin-stat-pill-card.accent-blue {
+  border: 1.5px solid #bfdbfe !important;
+}
+.page-shell-admin .admin-stat-pill-card.accent-blue:hover {
+  border-color: #2563eb !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.page-shell-admin .admin-stat-pill-card.accent-indigo {
+  border: 1.5px solid #c7d2fe !important;
+}
+.page-shell-admin .admin-stat-pill-card.accent-indigo:hover {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.page-shell-admin .admin-stat-pill-card.accent-amber {
+  border: 1.5px solid #fde68a !important;
+}
+.page-shell-admin .admin-stat-pill-card.accent-amber:hover {
+  border-color: #d97706 !important;
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.page-shell-admin .admin-stat-pill-card.accent-emerald {
+  border: 1.5px solid #a7f3d0 !important;
+}
+.page-shell-admin .admin-stat-pill-card.accent-emerald:hover {
+  border-color: #059669 !important;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.page-shell-admin .stat-pill-body {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.page-shell-admin .stat-pill-main {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.page-shell-admin .stat-pill-category {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #64748b !important;
+}
+
+.page-shell-admin .stat-pill-value {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
   margin-top: 4px !important;
 }
 
-.page-shell-admin .admin-stat-card {
-  background: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 10px !important;
-  padding: 12px 14px !important;
-  min-height: auto !important;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-  transition: all 0.16s ease !important;
+.page-shell-admin .admin-stat-pill-card.accent-blue .stat-pill-value {
+  color: #1d4ed8 !important;
 }
 
-.page-shell-admin .admin-stat-card:hover {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 3px 8px rgba(59, 130, 246, 0.08) !important;
-  transform: translateY(-1px) !important;
+.page-shell-admin .admin-stat-pill-card.accent-indigo .stat-pill-value {
+  color: #4338ca !important;
 }
 
-.page-shell-admin .stat-card-top {
+.page-shell-admin .admin-stat-pill-card.accent-amber .stat-pill-value {
+  color: #b45309 !important;
+}
+
+.page-shell-admin .admin-stat-pill-card.accent-emerald .stat-pill-value {
+  color: #047857 !important;
+}
+
+/* Circular icon indicator matching reference */
+.page-shell-admin .stat-pill-icon-circle {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
 }
 
-.page-shell-admin .stat-icon-wrap {
-  width: 28px !important;
-  height: 28px !important;
-  border-radius: 6px !important;
+.page-shell-admin .icon-circle-blue {
+  background: #eff6ff !important;
+  color: #2563eb !important;
 }
 
-.page-shell-admin .stat-icon-wrap svg {
-  width: 16px !important;
-  height: 16px !important;
+.page-shell-admin .icon-circle-indigo {
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
 }
 
-.page-shell-admin .stat-open-link {
-  font-size: 11px !important;
+.page-shell-admin .icon-circle-amber {
+  background: #fffbeb !important;
+  color: #d97706 !important;
+}
+
+.page-shell-admin .icon-circle-emerald {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+}
+
+.page-shell-admin .stat-pill-footer {
+  margin-top: 10px !important;
+}
+
+.page-shell-admin .stat-pill-link {
+  font-size: 12px !important;
   font-weight: 600 !important;
-  color: #64748b !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 3px !important;
+  transition: all 0.15s ease !important;
 }
 
-.page-shell-admin .stat-card-bottom {
-  margin-top: 8px !important;
+.page-shell-admin .link-blue {
+  color: #2563eb !important;
 }
 
-.page-shell-admin .stat-count {
-  font-size: 19px !important;
-  font-weight: 700 !important;
-  color: #0f172a !important;
-  line-height: 1.1 !important;
+.page-shell-admin .link-indigo {
+  color: #4f46e5 !important;
 }
 
-.page-shell-admin .stat-label {
-  font-size: 10.5px !important;
-  font-weight: 600 !important;
-  color: #64748b !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
-  margin-top: 2px !important;
+.page-shell-admin .link-amber {
+  color: #d97706 !important;
+}
+
+.page-shell-admin .link-emerald {
+  color: #059669 !important;
+}
+
+.page-shell-admin .admin-stat-pill-card:hover .stat-pill-link {
+  text-decoration: underline !important;
 }
 
 .page-shell-admin .admin-dashboard-split {
