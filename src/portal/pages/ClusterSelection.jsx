@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHeading from "../components/common/PageHeading";
-import { ArrowLeft, CheckCircle2, Info, Layers, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, Info } from "lucide-react";
 
 export default function ClusterSelection({ cluster, setCluster, goTo }) {
   const [pending, setPending] = useState(cluster || "Cluster 2");
@@ -36,10 +36,9 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
       />
 
       <section className="specialization-banner">
-        <div className="specialization-tag">
-          <Sparkles size={13} />
-          <span>YOUR SPECIALIZATION COHORT</span>
-        </div>
+        <span className="specialization-tag">
+          Your Specialization Cohort
+        </span>
         <strong>Generative AI for Agentic and Multi-Modal Intelligence</strong>
       </section>
 
@@ -61,19 +60,18 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
               }}
             >
               <div className="cluster-card-header">
-                <span className="cluster-icon" aria-hidden="true">
-                  <Layers size={18} className={selected ? "text-amber-600" : "text-stone-400"} />
-                </span>
-                {item.recommended && (
-                  <div className="cluster-badge">
-                    <span>Recommended</span>
-                  </div>
-                )}
-                {selected && (
-                  <span className="cluster-check">
-                    <CheckCircle2 size={18} className="text-amber-600" />
+                {item.recommended ? (
+                  <span className="cluster-badge">
+                    Recommended
+                  </span>
+                ) : (
+                  <span className="cluster-badge cluster-badge-neutral">
+                    Alternative
                   </span>
                 )}
+                <span className={`cluster-radio-indicator ${selected ? "is-selected" : ""}`}>
+                  {selected && <Check size={14} strokeWidth={3} />}
+                </span>
               </div>
 
               <div className="cluster-body">
@@ -119,7 +117,7 @@ export default function ClusterSelection({ cluster, setCluster, goTo }) {
           }}
         >
           <span>Confirm {pending}</span>
-          <CheckCircle2 size={16} />
+          <Check size={16} />
         </button>
       </div>
     </div>

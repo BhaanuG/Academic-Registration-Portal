@@ -1,8 +1,7 @@
 /* ==========================================================================
-   CLUSTER SELECTION SPECIFICATION STYLES (COMPACT, BALANCED & NO OVER-SIZING)
+   CLUSTER SELECTION SPECIFICATION STYLES (CLEAN, FUNCTIONAL & DIRECT)
    ========================================================================== */
 
-/* Page heading compact alignment for cluster selection */
 .page-shell-cluster .content {
   padding: 20px 32px 32px !important;
 }
@@ -17,23 +16,26 @@
 .cluster-selection-workspace .page-heading {
   margin-bottom: 16px !important;
   padding-bottom: 12px !important;
-  border-bottom: 1px solid #f3eedf !important;
+  border-bottom: 1px solid #ebdcc5 !important;
 }
 
 .cluster-selection-workspace .page-heading h1 {
   font-size: 22px !important;
+  font-weight: 700 !important;
   margin: 2px 0 4px !important;
+  color: #1c1917 !important;
 }
 
 .cluster-selection-workspace .page-heading .heading-description {
   font-size: 13px !important;
-  color: #64748b !important;
+  color: #78716c !important;
 }
 
 .cluster-selection-workspace .status-stamp {
   min-width: 200px !important;
   padding: 8px 14px !important;
   border-left: 3px solid #d97706 !important;
+  border-radius: 4px !important;
   background: #ffffff !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
@@ -51,7 +53,7 @@
   margin-top: 2px !important;
 }
 
-/* Specialization Cohort Banner */
+/* Specialization Banner */
 .specialization-banner {
   margin-top: 4px;
   padding: 10px 18px;
@@ -68,18 +70,15 @@
 }
 
 .specialization-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  display: inline-block;
   color: #92400e;
   font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   background: #fefce8;
   border: 1px solid #fde68a;
-  padding: 2px 8px;
-  border-radius: 12px;
+  padding: 3px 9px;
+  border-radius: 6px;
   flex-shrink: 0;
 }
 
@@ -87,10 +86,9 @@
   font-size: 13.5px;
   font-weight: 700;
   color: #1c1917;
-  letter-spacing: -0.01em;
 }
 
-/* Cluster Grid & Cards (Medium-Small, Balanced Rectangles) */
+/* Cluster Grid & Selection Cards */
 .cluster-grid {
   margin-top: 16px;
   display: grid;
@@ -104,12 +102,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1.5px solid #e7e5e4;
-  border-radius: 14px;
+  border: 1.5px solid #ebdcc5;
+  border-radius: 12px;
   background: #ffffff;
   color: #1c1917;
   position: relative;
-  transition: all 0.16s ease-in-out;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
   cursor: pointer;
   user-select: none;
@@ -130,30 +128,8 @@
 .cluster-card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   width: 100%;
-}
-
-.cluster-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #fdfbf7;
-  border: 1px solid #f5ede1;
-  flex-shrink: 0;
-}
-
-.cluster-icon svg {
-  width: 17px;
-  height: 17px;
-}
-
-.cluster-card.selected .cluster-icon {
-  background: #fefce8;
-  border-color: #fde68a;
 }
 
 .cluster-badge {
@@ -161,20 +137,41 @@
   background: #fefce8;
   border: 1px solid #fde68a;
   color: #854d0e;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
-  border-radius: 12px;
+  border-radius: 6px;
   display: inline-block;
 }
 
-.cluster-check {
-  margin-left: auto;
-  display: flex;
+.cluster-badge-neutral {
+  background: #fafaf9;
+  border-color: #e7e5e4;
+  color: #78716c;
+}
+
+/* Functional Single Selection Indicator */
+.cluster-radio-indicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #d6d3d1;
+  background: #ffffff;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.15s ease;
+  margin-left: auto;
+}
+
+.cluster-radio-indicator.is-selected {
+  border-color: #d97706;
+  background: #d97706;
+  color: #ffffff;
 }
 
 .cluster-body {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -248,7 +245,7 @@
   color: #d97706;
 }
 
-/* Bottom Action Buttons */
+/* Action Buttons */
 .cluster-actions {
   margin-top: 18px;
   display: flex;
