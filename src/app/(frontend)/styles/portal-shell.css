@@ -506,13 +506,13 @@
 }
 
 .subject-selection-page .subject-cards-grid {
-  padding: 20px 26px !important;
-  gap: 16px !important;
+  padding: 16px 22px !important;
+  gap: 10px !important;
 }
 
 .subject-selection-page .subject-card {
-  padding: 18px 22px !important;
-  gap: 12px !important;
+  padding: 14px 18px !important;
+  gap: 8px !important;
 }
 
 .subject-selection-page .card-title {
