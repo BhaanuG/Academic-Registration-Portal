@@ -46,57 +46,57 @@
   width: 100% !important;
 }
 
-/* Horizontal Rectangular Pill Cards with Subtle Accents */
+/* Horizontal Rectangular Pill Cards with Warm Amber & Gold Shades */
 .page-shell-admin .admin-stat-pill-card {
   width: 100% !important;
   background: #ffffff !important;
   border-radius: 18px !important;
-  padding: 14px 18px !important;
+  padding: 15px 20px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  height: 80px !important;
-  min-height: 80px !important;
+  height: 84px !important;
+  min-height: 84px !important;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
   cursor: pointer !important;
   transition: all 0.18s ease-in-out !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-blue {
-  border: 1.5px solid #bfdbfe !important;
+  border: 1.5px solid #fef3c7 !important;
 }
 .page-shell-admin .admin-stat-pill-card.accent-blue:hover {
-  border-color: #2563eb !important;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12) !important;
+  border-color: #d97706 !important;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.12) !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-indigo {
-  border: 1.5px solid #c7d2fe !important;
+  border: 1.5px solid #fde68a !important;
 }
 .page-shell-admin .admin-stat-pill-card.accent-indigo:hover {
-  border-color: #4f46e5 !important;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.12) !important;
+  border-color: #b45309 !important;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12) !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-amber {
   border: 1.5px solid #fed7aa !important;
 }
 .page-shell-admin .admin-stat-pill-card.accent-amber:hover {
-  border-color: #ea580c !important;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.12) !important;
+  border-color: #c2410c !important;
+  box-shadow: 0 4px 14px rgba(194, 65, 12, 0.12) !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-emerald {
-  border: 1.5px solid #bbf7d0 !important;
+  border: 1.5px solid #fef08a !important;
 }
 .page-shell-admin .admin-stat-pill-card.accent-emerald:hover {
-  border-color: #16a34a !important;
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.12) !important;
+  border-color: #ca8a04 !important;
+  box-shadow: 0 4px 14px rgba(202, 138, 4, 0.12) !important;
 }
 
 .page-shell-admin .stat-pill-body {
   display: flex !important;
-  align-items: flex-start !important;
+  align-items: center !important;
   justify-content: space-between !important;
   gap: 12px !important;
 }
@@ -107,26 +107,27 @@
 }
 
 .page-shell-admin .stat-pill-category {
-  font-size: 11px !important;
+  font-size: 10.5px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
+  letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
-  color: #64748b !important;
+  color: #78716c !important;
 }
 
 .page-shell-admin .stat-pill-value {
   font-size: 26px !important;
   font-weight: 800 !important;
   line-height: 1.15 !important;
-  margin-top: 5px !important;
+  margin-top: 3px !important;
+  color: #1c1917 !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-blue .stat-pill-value {
-  color: #1d4ed8 !important;
+  color: #92400e !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-indigo .stat-pill-value {
-  color: #4338ca !important;
+  color: #b45309 !important;
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-amber .stat-pill-value {
@@ -134,10 +135,10 @@
 }
 
 .page-shell-admin .admin-stat-pill-card.accent-emerald .stat-pill-value {
-  color: #15803d !important;
+  color: #854d0e !important;
 }
 
-/* Circular icon bubble on top-right matching reference */
+/* Circular icon bubble on top-right with refined warm gold & yellow hues */
 .page-shell-admin .stat-pill-icon-circle {
   width: 42px !important;
   height: 42px !important;
@@ -149,13 +150,13 @@
 }
 
 .page-shell-admin .icon-circle-blue {
-  background: #eff6ff !important;
-  color: #2563eb !important;
+  background: #fefce8 !important;
+  color: #ca8a04 !important;
 }
 
 .page-shell-admin .icon-circle-indigo {
-  background: #eef2ff !important;
-  color: #4f46e5 !important;
+  background: #fffbeb !important;
+  color: #d97706 !important;
 }
 
 .page-shell-admin .icon-circle-amber {
@@ -164,8 +165,8 @@
 }
 
 .page-shell-admin .icon-circle-emerald {
-  background: #f0fdf4 !important;
-  color: #16a34a !important;
+  background: #fef9c3 !important;
+  color: #a16207 !important;
 }
 
 .page-shell-admin .stat-pill-icon-circle svg {
