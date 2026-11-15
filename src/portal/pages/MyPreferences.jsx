@@ -241,7 +241,7 @@ export default function MyPreference({ selections, prefs, cluster }) {
                       <span className="unregistered-notice-text">
                         {isNone
                           ? "You opted out of this course bucket. No faculty preferences required."
-                          : "Course not selected yet. Choose a course in Subject Selection to assign faculty preferences."}
+                          : "Course not selected yet. Choose a course in Course Selection to assign faculty preferences."}
                       </span>
                     </td>
                   </tr>
